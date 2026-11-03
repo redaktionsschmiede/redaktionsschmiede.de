@@ -1,0 +1,170 @@
+<!doctype html>
+<html lang="de">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>RedaktionsSchmiede</title>
+<meta name="description" content="Die RedaktionsSchmiede: Werkzeuge für Redaktionen, gratis und für alle. Gebaut von Simon, Geograph, Journalist, KI-Berater beim MDR." />
+<style>
+  :root {
+    --paper: #161310;
+    --ink: #ece5d6;
+    --ink-soft: #b0a693;
+    --line: #312a1f;
+    --ember: #d9772f;
+    --ember-ink: #161310;
+    --serif: Georgia, "Times New Roman", serif;
+    --sans: -apple-system, system-ui, "Segoe UI", Roboto, sans-serif;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body { font-family: var(--sans); background: var(--paper); color: var(--ink); line-height: 1.7; font-size: 17px; }
+  a { color: var(--ember); text-decoration: none; }
+  a:hover { text-decoration: underline; }
+  ::selection { background: var(--ember); color: var(--ember-ink); }
+
+  nav { position: sticky; top: 0; z-index: 10; background: var(--paper); border-bottom: 1px solid var(--line); }
+  nav .inner { max-width: 760px; margin: 0 auto; padding: 0.8rem 1.5rem; display: flex; align-items: baseline; justify-content: space-between; gap: 1rem; flex-wrap: wrap; }
+  .brand { font-family: var(--serif); font-weight: 700; font-size: 1.05rem; color: var(--ink); }
+  .brand span { color: var(--ember); }
+  nav ul { display: flex; gap: 1.2rem; list-style: none; flex-wrap: wrap; }
+  nav ul a { color: var(--ink-soft); font-size: 0.9rem; }
+
+  main { max-width: 760px; margin: 0 auto; padding: 0 1.5rem; }
+  section { padding: 3.5rem 0; border-bottom: 1px solid var(--line); }
+  .kicker { text-transform: uppercase; letter-spacing: 0.14em; font-size: 0.75rem; color: var(--ember); font-weight: 600; margin-bottom: 0.7rem; }
+  h1 { font-family: var(--serif); font-size: clamp(2rem, 5vw, 2.9rem); line-height: 1.15; }
+  h2 { font-family: var(--serif); font-size: 1.5rem; margin-bottom: 1rem; }
+  p { color: var(--ink-soft); max-width: 62ch; margin-top: 1rem; }
+  p b, p strong { color: var(--ink); font-weight: 600; }
+  em { font-style: italic; }
+
+  #hero { padding-top: 4.5rem; }
+  .hero-sub { margin-top: 1.2rem; font-size: 1.1rem; color: var(--ink); }
+  .mission { margin-top: 1.8rem; padding: 1.1rem 1.3rem; border-left: 3px solid var(--ember); color: var(--ink); }
+  .cta { display: inline-block; margin-top: 1.4rem; background: var(--ember); color: var(--ember-ink); font-weight: 600; padding: 0.6rem 1.2rem; border-radius: 4px; font-size: 0.97rem; }
+  .cta:hover { background: #e88a42; text-decoration: none; }
+
+  dl.werk { margin-top: 1.5rem; }
+  dl.werk dt { font-family: var(--serif); font-weight: 700; font-size: 1.05rem; color: var(--ink); margin-top: 1.4rem; }
+  dl.werk dt .status { font-family: var(--sans); font-weight: 400; font-size: 0.8rem; color: var(--ink-soft); margin-left: 0.4rem; }
+  dl.werk dd { color: var(--ink-soft); max-width: 62ch; margin: 0.2rem 0 0 0; font-size: 0.97rem; }
+
+  ul.texte { list-style: none; margin-top: 1.2rem; }
+  ul.texte li { padding: 0.8rem 0; border-top: 1px solid var(--line); }
+  ul.texte li .meta { font-size: 0.8rem; color: var(--ink-soft); }
+  ul.texte li a { font-family: var(--serif); font-weight: 700; font-size: 1.05rem; }
+
+  .legal h3 { font-size: 1rem; margin-top: 1.4rem; font-weight: 700; }
+  .legal p { font-size: 0.95rem; max-width: 70ch; }
+  .ph { background: #4a3c0f; color: #ffdb70; border-bottom: 2px solid #b8912a; padding: 0 0.25rem; font-style: normal; }
+  .note { font-size: 0.85rem; color: var(--ink-soft); margin-top: 1rem; }
+
+  footer { padding: 2.5rem 0 3.5rem; color: var(--ink-soft); font-size: 0.9rem; }
+  footer .inner { max-width: 760px; margin: 0 auto; padding: 0 1.5rem; display: flex; justify-content: space-between; gap: 1rem; flex-wrap: wrap; }
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="inner">
+    <div class="brand">Redaktions<span>Schmiede</span></div>
+    <ul>
+      <li><a href="#werkstatt">Werkstatt</a></li>
+      <li><a href="#tools">Tools</a></li>
+      <li><a href="#texte">Texte</a></li>
+      <li><a href="#kontakt">Kontakt</a></li>
+      <li><a href="#impressum">Impressum</a></li>
+      <li><a href="#datenschutz">Datenschutz</a></li>
+    </ul>
+  </div>
+</nav>
+
+<main>
+
+  <section id="hero">
+    <p class="kicker">redaktionsschmiede.de</p>
+    <h1>Das ist die RedaktionsSchmiede.</h1>
+    <p class="hero-sub">Redaktionen haben oft viel zu tun und zu wenig Zeit für Tools.</p>
+    <p>Hier gibt es ein paar Werkzeuge aus dem journalistischen Alltag – gratis, für alle. Gebaut von Simon: Geograph, Journalist, KI-Berater beim MDR.</p>
+    <div class="mission">Weil niemand Zeit hat, das Rad ständig neu zu erfinden. Lasst uns die Medienwelt zusammen zukunftsfähig machen.</div>
+    <a class="cta" href="[GITHUB-REPO-URL – PLATZHALTER]">Wer nachbauen will: Code auf GitHub</a>
+  </section>
+
+  <section id="werkstatt">
+    <p class="kicker">Werkstatt</p>
+    <h2>Wie die Schmiede arbeitet</h2>
+    <p>Die RedaktionsSchmiede sammelt Medieninhalte, wertet sie aus und baut die Werkzeuge dafür selbst. Gebaut wird, was eine Frage beantwortet – nicht, was gerade möglich ist. Prototypen gelten als Erkenntnisinstrumente: Sie sollen zeigen, ob etwas funktioniert, nicht perfekt sein. Und Werkzeuge sollen gebaut und wieder übergeben werden, nicht dauerhaft betreut.</p>
+    <p>Die Grundüberzeugung dahinter: Inhalte werden künftig durch Metadaten beschrieben – und dadurch auswertbar, vergleichbar, besser verständlich. Deshalb beginnt hier jedes Werkzeug mit der Beschreibung der Daten, nicht mit der Ausgabe.</p>
+    <p>Hinter der Werkstatt steht Simon. Geographie studiert, dann Volontariat und Reporter beim ZDF, Product Manager beim RedaktionsNetzwerk Deutschland, beim NDR die technische Infrastruktur hinter Content-Analysen aufgebaut: Datenmodelle, Pipelines, Auswertungen, Automatisierung. Ab Dezember 2026 im KI-Bereich des MDR in Leipzig.</p>
+  </section>
+
+  <section id="tools">
+    <p class="kicker">Tools</p>
+    <h2>Werkzeuge, frei für alle</h2>
+    <p>Nichts davon ist ein Produkt. Was hier steht, darf benutzt und nachgebaut werden; wo Code öffentlich ist, führt der Link ins Repository. Jedes Projekt hat einen ehrlichen Stand:</p>
+    <dl class="werk">
+      <dt>Quellenkartei <span class="status">(läuft)</span></dt>
+      <dd>Kuratierte Liste deutscher und internationaler Medienquellen, auf RSS- und API-Basis. Pro Quelle ist dokumentiert, was mit ihr erlaubt ist – robots.txt, Nutzungsbedingungen, kommerzielle Nutzung –, bevor irgendetwas ausgewertet wird.</dd>
+      <dt>Tagesbriefing <span class="status">(läuft)</span></dt>
+      <dd>Newsletter und Terminquellen, jeden Morgen automatisch zu einem kurzen Briefing verdichtet. Für den eigenen Arbeitstag gebaut; im Alltag im Einsatz.</dd>
+      <dt>Secret Masker <span class="status">(läuft)</span></dt>
+      <dd>Markiert personenbezogene Angaben in Texten, bevor sie an fremde KI-Dienste gehen. Ein kleines Werkzeug aus dem journalistischen Arbeitsalltag.</dd>
+      <dt>Medienlandschafts-Analyse <span class="status">(im Bau)</span></dt>
+      <dd>Der Versuch, jeden Artikel einmal zentral auszuwerten – Themen, Orte, Rahmung – und alle weiteren Auswertungen darauf aufbauen zu lassen. Ergebnisse erscheinen, sobald sie etwas zeigen, das standhält.</dd>
+    </dl>
+    <p class="note">Weitere Skizzen liegen in der Schublade. Was davon läuft, erscheint in dieser Liste.</p>
+  </section>
+
+  <section id="texte">
+    <p class="kicker">Geschrieben</p>
+    <h2>Texte</h2>
+    <p>Methodennotizen, Einschätzungen zu KI im Journalismus und gelegentlich, was die eigenen Auswertungen zeigen – auch wenn sie nicht funktionieren. Unregelmäßig, ohne Redaktionsplan.</p>
+    <ul class="texte">
+      <li>
+        <span class="meta"><em class="ph">[DATUM – PLATZHALTER]</em></span><br />
+        <em class="ph">[ERSTER TEXT: DIE METADATEN-ÜBERZEUGUNG AUSGEFÜHRT – PLATZHALTER]</em>
+      </li>
+    </ul>
+    <p class="note">Bis Texte hier stehen, lohnt sich vielleicht ein Blick auf das, was ich auf <em class="ph">[LINK ZU LINKEDIN ODER ANDEREM KANAL – PLATZHALTER]</em> schreibe.</p>
+  </section>
+
+  <section id="kontakt">
+    <p class="kicker">Kontakt</p>
+    <h2>Schreiben Sie der Schmiede</h2>
+    <p>Wenn Sie Fragen haben, ein Werkzeug ausprobieren wollen oder eine Beobachtung aus Ihrer Redaktion loswerden: <a href="mailto:[KONTAKT-ADRESSE – PLATZHALTER]">E-Mail genügt</a>. Alles wird gelesen, meist kommt zeitnah eine Antwort.</p>
+  </section>
+
+  <section id="impressum" class="legal">
+    <p class="kicker">Angaben gemäß § 5 DDG</p>
+    <h2>Impressum</h2>
+    <h3>Diensteanbieter</h3>
+    <p>Simon Nomis<br />
+    <em class="ph">[c/o-IMPRESSUMSADRESSE – PLATZHALTER]</em><br />
+    E-Mail: <em class="ph">[KONTAKT-ADRESSE – PLATZHALTER]</em></p>
+    <h3>Verantwortlich gemäß § 18 Abs. 2 MStV</h3>
+    <p>Simon Nomis, Anschrift wie oben.</p>
+    <p class="note">Hinweis für den Launch: Vor Veröffentlichung muss hier der echte Name stehen; eine anonym registrierte Domain ändert daran nichts.</p>
+  </section>
+
+  <section id="datenschutz" class="legal" style="border-bottom: none;">
+    <p class="kicker">Datenschutz</p>
+    <h2>Datenschutzerklärung</h2>
+    <p>Diese Seite kommt ohne Cookies, ohne Tracking-Pixel und ohne Analyse-Dienste mit Personenbezug aus. Beim Aufruf werden technisch notwendige Verbindungsdaten verarbeitet.</p>
+    <h3>Hosting</h3>
+    <p>Auslieferung über das Edge-Netz von Cloudflare. Beim Seitenaufruf wird Ihre IP-Adresse technisch verarbeitet; Rechtsgrundlage ist Art. 6 Abs. 1 lit. f DSGVO (berechtigtes Interesse an Auslieferung und Schutz der Seite). <em class="ph">[BEIM LAUNCH PRÜFEN: AKTUELLER STAND ZU CLOUDFLARE-AUFTRAGSVERARBEITUNG UNG DRITTLÄNDERÜBERMITTLUNG – PLATZHALTER]</em></p>
+    <h3>Kontakt</h3>
+    <p>Anfragen und Widersprüche an: <em class="ph">[KONTAKT-ADRESSE – PLATZHALTER]</em></p>
+  </section>
+
+</main>
+
+<footer>
+  <div class="inner">
+    <div>© 2026 RedaktionsSchmiede</div>
+    <div><a href="#impressum">Impressum</a> · <a href="#datenschutz">Datenschutz</a></div>
+  </div>
+</footer>
+
+</body>
+</html>
