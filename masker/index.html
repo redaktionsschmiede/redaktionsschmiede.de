@@ -1,0 +1,279 @@
+<!doctype html>
+<html lang="de">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="Cache-Control" content="no-store, no-cache, must-revalidate, max-age=0" />
+    <meta http-equiv="Pragma" content="no-cache" />
+    <meta http-equiv="Expires" content="0" />
+    <meta name="description" content="Secret Masker: Markiert Geheimnisse und personenbezogene Angaben in Texten, bevor sie an fremde KI-Dienste gehen. Läuft vollständig im Browser – Texte verlassen diesen Browser niemals." />
+    <title>Secret Masker · RedaktionsSchmiede</title>
+    <style>
+      :root { font-family: Inter, system-ui, sans-serif; color: #111827; background: #f8fafc; }
+      * { box-sizing: border-box; }
+      body { margin: 0; }
+      .wrap { max-width: 960px; margin: 0 auto; padding: 24px; }
+      .back { display: inline-block; margin-bottom: 14px; font-size: 13px; color: #6b7280; text-decoration: none; }
+      .back:hover { color: #111827; }
+      h1 { font-size: 24px; margin: 0 0 4px; }
+      .sub { font-size: 13px; color: #6b7280; margin-bottom: 16px; }
+      .lbl { font-size: 11px; text-transform: uppercase; letter-spacing: .05em; color: #6b7280; font-weight: 600; margin: 14px 0 6px; display: flex; justify-content: space-between; align-items: center; gap: 8px; }
+      textarea { width: 100%; min-height: 140px; padding: 12px; border: 1px solid #d1d5db; border-radius: 8px; font-family: ui-monospace, monospace; font-size: 12px; line-height: 1.6; resize: vertical; }
+      textarea:focus { outline: 2px solid #111827; }
+      #doc { width: 100%; padding: 14px; border: 2px solid #d1d5db; border-radius: 8px; background: #fff; font-family: ui-monospace, monospace; font-size: 12px; line-height: 2; white-space: pre-wrap; word-break: break-word; min-height: 100px; }
+      .mark { padding: 1px 3px; border-radius: 3px; font-weight: 600; }
+      /* Angenommen: farbige Unterlegung je Kategorie (inline gesetzt) */
+      /* Abgelehnt: grau unterlegt, Original lesbar, per ✓ wieder aktivierbar */
+      .mark.rejected { background: #e5e7eb !important; color: #4b5563 !important; font-weight: 500; }
+      .mini { font-size: 10px; font-family: sans-serif; font-weight: 700; padding: 1px 7px; margin: 0 3px; border: 1px solid #9ca3af; border-radius: 6px; background: #fff; cursor: pointer; vertical-align: middle; line-height: 1.5; }
+      .mini:hover { background: #f3f4f6; }
+      .mini.yes { color: #065f46; border-color: #065f46; }
+      .mini.no { color: #991b1b; border-color: #991b1b; }
+      .cats { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 8px; margin-bottom: 14px; }
+      .cat { display: flex; align-items: center; gap: 8px; padding: 8px 10px; border: 2px solid; border-radius: 8px; font-size: 13px; font-weight: 500; cursor: pointer; user-select: none; }
+      .cat.off { background: #f9fafb; color: #9ca3af; border-color: #e5e7eb; }
+      .cat .cnt { margin-left: auto; background: rgba(255,255,255,.8); border-radius: 4px; font-size: 11px; font-weight: 700; padding: 1px 6px; }
+      .btn { padding: 5px 12px; font-size: 12px; border: none; border-radius: 7px; cursor: pointer; background: #111827; color: #fff; }
+      .btn:hover { background: #374151; }
+      .btn.ghost { background: #e5e7eb; color: #111827; }
+      .btn.ghost:hover { background: #d1d5db; }
+      .actions { display: flex; gap: 12px; margin-top: 18px; align-items: center; flex-wrap: wrap; }
+      .actions .btn.big { padding: 10px 18px; font-size: 14px; }
+      details { margin-top: 16px; font-size: 13px; color: #4b5563; }
+      pre { margin-top: 8px; padding: 12px; background: #f3f4f6; border-radius: 8px; font-size: 12px; white-space: pre-wrap; word-break: break-word; }
+      .legend { font-size: 12px; color: #6b7280; margin: 6px 0 0; }
+      .privacy { margin-top: 18px; padding: 10px 14px; border-radius: 8px; background: #f0fdf4; color: #14532d; font-size: 12px; }
+    </style>
+  </head>
+  <body>
+    <div class="wrap">
+      <a class="back" href="/">← RedaktionsSchmiede</a>
+      <h1>🔒 Secret Masker</h1>
+      <div class="sub">Zu maskierende Stellen sind farblich unterlegt – direkt im Text annehmen (✕) oder ablehnen (✓ bei grauen Stellen). Standard: alles maskiert.</div>
+
+      <div class="cats" id="cats"></div>
+
+      <div class="lbl">1 · Eingabe (gesamter Text hier einfügen)</div>
+      <textarea id="input" spellcheck="false" placeholder="Text hier einfügen…"></textarea>
+
+      <div class="lbl">
+        <span>2 · Vorschau – <span id="stat"></span></span>
+        <span>
+          <button class="btn ghost" id="acceptAll" style="display:none">Alle wieder maskieren</button>
+        </span>
+      </div>
+      <div id="doc"></div>
+      <p class="legend">Farbig unterlegt = wird maskiert · Grau unterlegt = abgelehnt (bleibt im Klartext) · Buttons direkt an der Stelle: ✕ ablehnen, ✓ wieder maskieren</p>
+
+      <div class="actions">
+        <button class="btn big" id="copyBtn">Endergebnis kopieren</button>
+        <button class="btn big ghost" id="applyBtn">Maskierung in Eingabe übernehmen</button>
+      </div>
+
+      <details>
+        <summary style="cursor:pointer;font-weight:500">Endergebnis (roh)</summary>
+        <pre id="raw"></pre>
+      </details>
+
+      <div class="privacy">
+        🔒 Datenschutz: Der Text verlässt diesen Browser niemals. Keine Cookies, kein localStorage/sessionStorage, kein Cache, keine Netzwerk-Calls – das Tool ist eine reine clientseitige Single-Page ohne Serverkontakt nach dem Laden. Alle IPv4-Adressen werden maskiert, auch interne (10.x, 172.16–31.x, 192.168.x) – einzelne Treffer lassen sich per ✓ ablehnen.
+      </div>
+    </div>
+    <script>
+      // Hinweis: Dieses Tool speichert NICHTS – keine Cookies, kein localStorage,
+      // kein sessionStorage, kein IndexedDB, keine fetch/XHR-Aufrufe nach dem Laden.
+      // Alle Entscheidungen (decisions) liegen nur im Arbeitsspeicher der Seite.
+      const CATEGORIES = [
+        { id: "apikey", label: "API-Keys & Tokens", color: "#fee2e2/#991b1b", placeholder: "[API_KEY]",
+          patterns: [/(?:sk|pk|rk|api)[-_]?(?:live|test|prod)?[A-Za-z0-9]{16,}/g, /(?:ghp|gho|ghu|ghs|ghr)_[A-Za-z0-9]{20,}/g, /(?:AKIA|ASIA)[0-9A-Z]{16}/g, /xox[bpoa]-[A-Za-z0-9-]{10,}/g, /AIza[0-9A-Za-z\-_]{20,}/g, /(?:eyJ)[A-Za-z0-9\-_]+\.[A-Za-z0-9\-_]+(?:\.[A-Za-z0-9\-_]+)?/g] },
+        { id: "password", label: "Passwörter & Credentials", color: "#ffedd5/#9a3412", placeholder: "[PASSWORT]",
+          patterns: [/(?:password|passwd|pwd|pass|passwort|kennwort|secret|token|credential|auth[_-]?key|api[_-]?key|apikey|client[_-]?secret|access[_-]?key|private[_-]?key|zugang)\s*[=:]\s*["']?[^\s"',;]{3,}/gi, /(?:Bearer)\s+[A-Za-z0-9\-._~+/]+=*/gi, /-----BEGIN [A-Z ]*PRIVATE KEY-----[\s\S]*?-----END [A-Z ]*PRIVATE KEY-----/g] },
+        { id: "hexid", label: "IDs & Hex-Strings (aggressiv)", color: "#fae8ff/#86198f", placeholder: "[ID]",
+          patterns: [
+            // UUID mit Bindestrichen
+            /\b[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}\b/gi,
+            // Hex-Strings ab 12 Zeichen (auch länger), z.B. 2e46f56867e34af09dc49febbea35dd5
+            /\b[0-9a-f]{12,64}\b/gi,
+            // Aggressiv: lange alphanumerische Token ab 20 Zeichen (Base64-artig etc.)
+            /\b[A-Za-z0-9]{20,}\b/g
+          ],
+          validate: (v) => {
+            if (v.includes("-")) return true; // UUID-Form immer maskieren
+            const digits = (v.match(/\d/g) || []).length;
+            if (digits >= 3) return true; // genug Ziffern => kein normales Wort
+            return false;
+          } },
+        { id: "email", label: "E-Mail-Adressen", color: "#dbeafe/#1e40af", placeholder: "[E-MAIL]",
+          patterns: [/[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}/g] },
+        { id: "username", label: "Usernamen", color: "#f3e8ff/#6b21a8", placeholder: "[USERNAME]",
+          patterns: [/(?:user|username|benutzer|usr|login)\s*[=:]\s*["']?[\w.\-]{2,}/gi, /(?:sudo|su)\s+-\s*[a-z_][\w\-]*/gi] },
+        { id: "filepath", label: "Dateipfade", color: "#d1fae5/#065f46", placeholder: "[PFAD]",
+          patterns: [/\/(?:home|Users|root|var|etc|opt|srv|mnt|data)\/[\w.\-]+(?:\/[\w.\-]+)*/g, /[A-Za-z]:\\(?:Users|Windows|Program[ ]?Files)[^\s"'<>|,;]*/g, /(?:~\/|\.\.\/|\.\/)[\w.\-/]+/g] },
+        { id: "ip", label: "IP-Adressen (alle, auch interne)", color: "#ccfbf1/#115e59", placeholder: "[IP]",
+          patterns: [
+            // Alle IPv4-Adressen: Oktetten mit 1-3 Ziffern, auch mit führenden Nullen.
+            // Bewusst ohne Bereichs-/Privat-Filter: Auch interne Adressen (10.x,
+            // 172.16-31.x, 192.168.x, 127.0.0.1) sind maskierwürdig, bevor Texte
+            // an fremde KI-Dienste gehen. Einzelne Treffer sind per ✓ ablehnbar.
+            /\b(?:\d{1,3}\.){3}\d{1,3}\b/g
+          ] },
+        { id: "url", label: "Webadressen (URLs)", color: "#e0e7ff/#3730a3", placeholder: "[URL]",
+          patterns: [/\bhttps?:\/\/[^\s"'<>()]+/gi, /\bwww\.[a-zA-Z0-9\-]+(?:\.[a-zA-Z0-9\-]+)+(?:\/[^\s"'<>()]*)?/g, /\b[a-zA-Z0-9\-]+\.(?:de|com|net|org|io|dev|eu|fr|it|ch|at|info|cloud)(?:\/[^\s"'<>()]*)?\b/g] },
+        { id: "iban", label: "IBAN & Kontonummern", color: "#fef3c7/#92400e", placeholder: "[IBAN]",
+          patterns: [/\b[A-Z]{2}\d{2}(?:[ ]?[A-Z0-9]{4}){2,7}(?:[ ]?[A-Z0-9]{1,2})?\b/g] },
+        { id: "phone", label: "Telefonnummern", color: "#fce7f3/#9d174d", placeholder: "[TELEFON]",
+          patterns: [/(?:\+\d{1,3}[ .-]?)?(?:0\d{2,4}[ .-]?)?\d{3,}(?:[ .-]?\d{2,4}){1,2}\b/g] },
+      ];
+
+      const DEMO = 'Server-Konfiguration:\napi_key = "sk-live-AbC123XyZ456QrStUvWx890"\nDB_PASSWORD: StrengGeheim!2024\nBearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiIxMjMifQ.tX7k\n\nSession-ID: 2e46f56867e34af09dc49febbea35dd5\nTrace-ID: a3f9c2e1-8b4d-4f7a-9c6e-2d8b1a5e7f90\nHash: 7c4a8d09ca3762af61e59520943dc264\n\nAdmin: max.mueller@firma.de\nsudo - deploy\nHome: /home/mueller/projekte/config.yml\nLogs unter C:\\Users\\mueller\\AppData\\db.log\nDB-Host (lokal): 10.42.17.233\nÖffentlich: 203.0.113.45\nWeb: https://intranet.firma.de/admin und www.kunde-example.com\nIBAN: DE89 3704 0044 0532 0130 00\nTel.: +49 89 12345678';
+
+      const enabled = {}; CATEGORIES.forEach(c => enabled[c.id] = true);
+      // Entscheidung pro Treffer: true = maskiert (Standard), false = abgelehnt. Nur im RAM!
+      const decisions = new Map();
+      const inputEl = document.getElementById("input");
+      const docEl = document.getElementById("doc");
+      const rawEl = document.getElementById("raw");
+      const statEl = document.getElementById("stat");
+      const catsEl = document.getElementById("cats");
+      const acceptAllBtn = document.getElementById("acceptAll");
+      const copyBtn = document.getElementById("copyBtn");
+      const applyBtn = document.getElementById("applyBtn");
+
+      function esc(s) { return s.replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;").replace(/"/g,"&quot;"); }
+
+      function computeMatches(text) {
+        const matches = [];
+        for (const cat of CATEGORIES) {
+          if (!enabled[cat.id]) continue;
+          for (const p of cat.patterns) {
+            p.lastIndex = 0; let m;
+            while ((m = p.exec(text)) !== null)
+              matches.push({ start: m.index, end: m.index + m[0].length, cat: cat.id, orig: m[0] });
+          }
+        }
+        const filtered = matches.filter(m => {
+          const cat = CATEGORIES.find(c => c.id === m.cat);
+          return !cat.validate || cat.validate(m.orig);
+        });
+        filtered.sort((a, b) => a.start - b.start);
+        const chosen = [];
+        for (const m of filtered) {
+          const last = chosen[chosen.length - 1];
+          if (last && m.start < last.end) continue;
+          chosen.push(m);
+        }
+        chosen.forEach(m => m.id = m.start + ":" + m.orig);
+        return chosen;
+      }
+
+      function isAccepted(m) {
+        return !decisions.has(m.id) || decisions.get(m.id) === true;
+      }
+
+      function catStyle(catId) {
+        const [bg, fg] = CATEGORIES.find(c => c.id === catId).color.split("/");
+        return "background:" + bg + ";color:" + fg;
+      }
+
+      function render() {
+        const text = inputEl.value;
+        const chosen = computeMatches(text);
+
+        // Vorschau: voller Originaltext, Treffer farbig (angenommen) oder grau (abgelehnt) unterlegt,
+        // mit Buttons direkt an jeder Stelle im Fließtext
+        let html = "";
+        let pos = 0;
+        chosen.forEach((m, i) => {
+          if (m.start > pos) html += esc(text.slice(pos, m.start));
+          const acc = isAccepted(m);
+          if (acc) {
+            html += '<span class="mark" style="' + catStyle(m.cat) + '" title="Wird maskiert – ✕ zum Ablehnen">' + esc(m.orig) + "</span>";
+            html += '<button class="mini no" data-a="reject" data-i="' + i + '" title="Diesen Treffer ablehnen – bleibt im Klartext">✕</button>';
+          } else {
+            html += '<span class="mark rejected" title="Abgelehnt – bleibt im Klartext">' + esc(m.orig) + "</span>";
+            html += '<button class="mini yes" data-a="accept" data-i="' + i + '" title="Diesen Treffer wieder maskieren">✓</button>';
+          }
+          pos = m.end;
+        });
+        html += esc(text.slice(pos));
+        docEl.innerHTML = html || '<span style="color:#9ca3af">— Text hier einfügen —</span>';
+
+        const accepted = chosen.filter(isAccepted).length;
+        statEl.textContent = chosen.length + " Treffer, " + accepted + " maskiert, " + (chosen.length - accepted) + " abgelehnt";
+        acceptAllBtn.style.display = (chosen.length > 0 && accepted < chosen.length) ? "" : "none";
+        rawEl.textContent = buildFinal(text, chosen);
+
+        // Kategorie-Zähler
+        const counts = {};
+        for (const m of chosen) counts[m.cat] = (counts[m.cat] || 0) + 1;
+        document.querySelectorAll(".cat").forEach(el => {
+          const id = el.dataset.id;
+          const [bg, fg] = CATEGORIES.find(c => c.id === id).color.split("/");
+          el.className = "cat" + (enabled[id] ? "" : " off");
+          el.style.borderColor = enabled[id] ? fg : "#e5e7eb";
+          el.style.background = enabled[id] ? bg : "";
+          el.style.color = enabled[id] ? fg : "";
+          const cnt = el.querySelector(".cnt");
+          if (cnt) cnt.remove();
+          if (counts[id]) {
+            const s = document.createElement("span");
+            s.className = "cnt"; s.textContent = counts[id];
+            el.appendChild(s);
+          }
+        });
+      }
+
+      function currentMatches() { return computeMatches(inputEl.value); }
+
+      function buildFinal(text, chosen) {
+        let out = "", pos = 0;
+        for (const m of chosen) {
+          if (m.start > pos) out += text.slice(pos, m.start);
+          out += isAccepted(m) ? CATEGORIES.find(c => c.id === m.cat).placeholder : m.orig;
+          pos = m.end;
+        }
+        out += text.slice(pos);
+        return out;
+      }
+
+      docEl.addEventListener("click", (e) => {
+        const btn = e.target.closest("button[data-a]");
+        if (!btn) return;
+        const chosen = currentMatches();
+        const m = chosen[Number(btn.dataset.i)];
+        if (!m) return;
+        decisions.set(m.id, btn.dataset.a === "accept");
+        render();
+      });
+
+      acceptAllBtn.addEventListener("click", () => { decisions.clear(); render(); });
+
+      CATEGORIES.forEach(cat => {
+        const lb = document.createElement("label");
+        lb.className = "cat"; lb.dataset.id = cat.id;
+        const cb = document.createElement("input");
+        cb.type = "checkbox"; cb.checked = true;
+        cb.addEventListener("change", () => { enabled[cat.id] = cb.checked; render(); });
+        const sp = document.createElement("span");
+        sp.textContent = cat.label; sp.style.flex = "1";
+        lb.appendChild(cb); lb.appendChild(sp);
+        catsEl.appendChild(lb);
+      });
+
+      inputEl.value = DEMO;
+      inputEl.addEventListener("input", () => { decisions.clear(); render(); });
+      copyBtn.addEventListener("click", async () => {
+        const t = buildFinal(inputEl.value, currentMatches());
+        try { await navigator.clipboard.writeText(t); copyBtn.textContent = "✓ Kopiert!"; }
+        catch (e) { copyBtn.textContent = "Kopieren fehlgeschlagen"; }
+        setTimeout(() => copyBtn.textContent = "Endergebnis kopieren", 1500);
+      });
+      applyBtn.addEventListener("click", () => {
+        inputEl.value = buildFinal(inputEl.value, currentMatches());
+        decisions.clear();
+        render();
+      });
+      render();
+    </script>
+  </body>
+</html>
