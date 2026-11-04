@@ -61,6 +61,14 @@
   ul.texte li .meta { font-size: 0.8rem; color: var(--ink-soft); }
   ul.texte li a { font-family: var(--serif); font-weight: 700; font-size: 1.05rem; }
 
+  ul.proben { list-style: none; margin-top: 1.2rem; }
+  ul.proben li { padding: 0.9rem 0; border-top: 1px solid var(--line); }
+  ul.proben li .meta { display: block; font-size: 0.8rem; color: var(--ink-soft); }
+  ul.proben li a { font-family: var(--serif); font-weight: 700; font-size: 1.05rem; }
+  ul.proben li p { margin: 0.25rem 0 0; font-size: 0.95rem; }
+  #texte h3 { font-family: var(--serif); font-size: 1.15rem; color: var(--ink); margin-top: 2rem; }
+  #texte .meta { display: block; font-size: 0.8rem; color: var(--ink-soft); margin-top: 0.15rem; }
+
   .legal h3 { font-size: 1rem; margin-top: 1.4rem; font-weight: 700; }
   .legal p { font-size: 0.95rem; max-width: 70ch; }
   .note { font-size: 0.85rem; color: var(--ink-soft); margin-top: 1rem; }
@@ -77,6 +85,7 @@
     <ul>
       <li><a href="#haltung">Wofür ich stehe</a></li>
       <li><a href="#steckbrief">Steckbrief</a></li>
+      <li><a href="#arbeitsproben">Arbeitsproben</a></li>
       <li><a href="#werkzeuge">Werkzeuge</a></li>
       <li><a href="#texte">Texte</a></li>
       <li><a href="#kontakt">Kontakt</a></li>
@@ -135,6 +144,49 @@
     <p class="note">Diese Seite ist davon unabhängig und ist mein Privatprojekt.</p>
   </section>
 
+  <section id="arbeitsproben">
+    <p class="kicker">Veröffentlichungen</p>
+    <h2>Arbeitsproben</h2>
+    <p>Erst Sendeplätze, dann Systeme. Eine Auswahl aus Redaktionsalltagen – berichtet, produziert, beschrieben:</p>
+    <ul class="proben">
+      <li>
+        <span class="meta">RND · Politik</span>
+        <a href="https://www.rnd.de/politik/linken-vorschlag-keine-hausaufgaben-oder-noten-mehr-wie-steht-es-um-unsere-bildung-K7QXJYXTHZAELKLLALOTUT3OWY.html">Keine Hausaufgaben und keine Noten mehr: Wie steht es um unsere Bildung?</a>
+        <p>Ein Vorschlag der Linken, Schule ohne Hausaufgaben und Noten zu denken – und die Frage, wie es um Bildung wirklich steht.</p>
+      </li>
+      <li>
+        <span class="meta">RND · Politik</span>
+        <a href="https://www.rnd.de/politik/iran-ein-jahr-nach-protest-beginn-amnesty-international-fordert-druck-zu-erhoehen-QHIY7G7DKBBZXDLD2SXTP3FMXQ.html">Iran, ein Jahr nach Protest-Beginn</a>
+        <p>Amnesty International fordert, den Druck auf Teheran zu erhöhen – eine Bilanz des Jahres nach den Protesten.</p>
+      </li>
+      <li>
+        <span class="meta">RND · Panorama</span>
+        <a href="https://www.rnd.de/panorama/911-ueberlebender-zu-verstehen-was-ich-sah-war-fast-unmoeglich-IQZALG6PPRDYDGD6RYOJLW3AUQ.html">„Zu verstehen, was ich sah, war fast unmöglich“</a>
+        <p>Ein 9/11-Überlebender erzählt – Zeugnis statt Jahrestagsroutine.</p>
+      </li>
+      <li>
+        <span class="meta">ZDFheute · Datenreportage</span>
+        <a href="https://zdf.shorthandstories.com/intensivstationen-in-dramatischer-lage-zdfheute/">Intensivstationen in dramatischer Lage</a>
+        <p>Zur Lage der Intensivmedizin im Winter 2021: Zahlen und Zitate aus den Kliniken, eingeordnet. Das Stück steht beispielhaft für die Arbeit, aus der später die Werkzeuge der Schmiede wurden.</p>
+      </li>
+      <li>
+        <span class="meta">ZDFheute · heute journal Update</span>
+        <a href="https://www.zdfheute.de/video/heute-journal-update/cuxhaven-offshore-windpark-100.html">Offshore-Windpark vor Cuxhaven</a>
+        <p>Vor Ort, wo die Energiewende aus dem Wasser ragt.</p>
+      </li>
+      <li>
+        <span class="meta">ZDFheute · heute journal</span>
+        <a href="https://www.zdfheute.de/video/heute-journal/der-rubel-rollt-nach-unten-100.html">Der Rubel rollt nach unten</a>
+        <p>Wenn der Kurs selbst zur Nachricht wird: zur Schwäche des Rubel und der russischen Wirtschaft.</p>
+      </li>
+      <li>
+        <span class="meta">ZDF · Presse</span>
+        <a href="https://presseportal.zdf.de/pressemitteilung/in-ostfrieslands-groesster-stadt-zdf-in-emden">In Ostfrieslands größter Stadt: ZDF in Emden</a>
+        <p>Wie aus einer Stadt in Ostfriesland ein Berichte-Ort wird: meine Projektbeschreibung zum ZDF-Auftritt vor Ort.</p>
+      </li>
+    </ul>
+  </section>
+
   <section id="werkzeuge">
     <p class="kicker">Werkstatt</p>
     <h2>Werkzeuge, frei für alle</h2>
@@ -156,7 +208,15 @@
     <p class="kicker">Geschrieben</p>
     <h2>Texte</h2>
     <p>Methodennotizen, Einschätzungen zu KI im Journalismus und gelegentlich, was die eigenen Auswertungen zeigen – auch wenn sie nicht funktionieren. Unregelmäßig, ohne Redaktionsplan.</p>
-    <p class="note">Bis Texte hier stehen, lohnt sich vielleicht ein Blick auf das, was ich auf <a href="https://www.linkedin.com/in/simonhrubesch/">LinkedIn</a> schreibe.</p>
+    <h3>Die Metadaten-Überzeugung, ausgeführt</h3>
+    <span class="meta">Erster Text · November 2026</span>
+    <p>Ich habe Bevölkerungsdynamik in Leipzig untersucht und die Bewegungsmuster von Fahrradverleihsystemen in Hamburg. Dabei habe ich eines gelernt: Man versteht ein System erst, wenn man es beschreiben kann. Zahlen, Kategorien, Orte – was zählt, wird gezählt. Nur so entsteht aus Einzelbeobachtung eine Landkarte.</p>
+    <p>Heute wende ich denselben Blick auf die Medienlandschaft an. Jeder Artikel, jede Meldung, jedes Video ist ein Objekt mit Eigenschaften: Thema, Ort, Quelle, Datum, Ressort, Rahmung. Diese Eigenschaften heißen Metadaten. Sie sind nicht neu. Neu ist, dass Maschinen sie lesen und auswerten können – und dass damit Fragen beantwortbar werden, die sonst im Bauchgefühl bleiben: Worum geht es gerade in der Medienwelt? Wie wird darüber berichtet? Was kommt an – und bei wem?</p>
+    <p>Meine These: Inhalte werden künftig durch Kombinationen von Metadaten beschrieben und dadurch für KI berechenbar. Die meisten Redaktionen haben das noch nicht begriffen. Journalismus sollte nicht abwarten, bis Plattformen es wieder vorgeben, sondern vorlegen, wie es geht: transparent, nachvollziehbar, im eigenen Interesse.</p>
+    <p>Was das konkret heißt? Jede Auswertung beginnt mit der Beschreibung der Daten, nicht mit der Ausgabe: Woher kommt der Inhalt, welche Kategorie, welche Region, was ist mit ihm erlaubt? Erst wenn das stimmt, stimmt auch, was danach kommt. Die Quellenkartei auf dieser Seite ist so ein Anfang: eine Liste von Medienquellen, bei der pro Quelle dokumentiert ist, was mit ihr erlaubt ist, bevor irgendetwas ausgewertet wird. Nichts Spektakuläres. Ein Anfang.</p>
+    <p>Der nächste Schritt ist größer: jeden Artikel einmal zentral zu beschreiben – Themen, Orte, Rahmung – und alle weiteren Auswertungen darauf aufbauen zu lassen. Das ist keine Vision, das ist Bauarbeit. Die Medienlandschafts-Analyse in der Werkstatt versucht genau das; sie wird scheitern, bis sie nicht mehr scheitert. Prototypen sind Erkenntnisinstrumente: Sie sollen zeigen, ob etwas funktioniert, nicht perfekt sein.</p>
+    <p>Wenn Sie das für Unsinn halten, schreiben Sie mir. Wenn Sie es für selbstverständlich halten und es längst anders machen, auch. Die Metadaten-Überzeugung ist keine Religion. Sie ist eine Arbeitshypothese mit Werkzeugkasten.</p>
+    <p class="note">Weitere Texte entstehen unregelmäßig. Was ich nebenbei schreibe, steht auf <a href="https://www.linkedin.com/in/simonhrubesch/">LinkedIn</a>.</p>
   </section>
 
   <section id="kontakt">
