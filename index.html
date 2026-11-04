@@ -3,8 +3,8 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>RedaktionsSchmiede</title>
-<meta name="description" content="Die RedaktionsSchmiede: Werkzeuge für Redaktionen, gratis und für alle. Gebaut von Simon, Geograph, Journalist, KI-Berater beim MDR." />
+<title>Simon Hrubesch · RedaktionsSchmiede</title>
+<meta name="description" content="Simon Hrubesch: Geograph, Journalist, KI-Berater. Die RedaktionsSchmiede ist seine Werkstatt – Werkzeuge für Redaktionen, gratis und für alle." />
 <style>
   :root {
     --paper: #161310;
@@ -45,6 +45,12 @@
   .cta { display: inline-block; margin-top: 1.4rem; background: var(--ember); color: var(--ember-ink); font-weight: 600; padding: 0.6rem 1.2rem; border-radius: 4px; font-size: 0.97rem; }
   .cta:hover { background: #e88a42; text-decoration: none; }
 
+  ol.haltung { list-style: none; margin-top: 1.5rem; counter-reset: haltung; }
+  ol.haltung li { counter-increment: haltung; position: relative; padding: 1.1rem 0 1.1rem 2.8rem; border-top: 1px solid var(--line); }
+  ol.haltung li::before { content: counter(haltung, decimal-leading-zero); position: absolute; left: 0; top: 1.15rem; font-family: var(--serif); font-weight: 700; color: var(--ember); }
+  ol.haltung li strong { display: block; font-family: var(--serif); font-size: 1.05rem; color: var(--ink); }
+  ol.haltung li p { margin-top: 0.2rem; }
+
   dl.werk { margin-top: 1.5rem; }
   dl.werk dt { font-family: var(--serif); font-weight: 700; font-size: 1.05rem; color: var(--ink); margin-top: 1.4rem; }
   dl.werk dt .status { font-family: var(--sans); font-weight: 400; font-size: 0.8rem; color: var(--ink-soft); margin-left: 0.4rem; }
@@ -57,7 +63,6 @@
 
   .legal h3 { font-size: 1rem; margin-top: 1.4rem; font-weight: 700; }
   .legal p { font-size: 0.95rem; max-width: 70ch; }
-  .ph { background: #4a3c0f; color: #ffdb70; border-bottom: 2px solid #b8912a; padding: 0 0.25rem; font-style: normal; }
   .note { font-size: 0.85rem; color: var(--ink-soft); margin-top: 1rem; }
 
   footer { padding: 2.5rem 0 3.5rem; color: var(--ink-soft); font-size: 0.9rem; }
@@ -70,12 +75,11 @@
   <div class="inner">
     <div class="brand">Redaktions<span>Schmiede</span></div>
     <ul>
-      <li><a href="#werkstatt">Werkstatt</a></li>
-      <li><a href="#tools">Tools</a></li>
+      <li><a href="#haltung">Wofür ich stehe</a></li>
+      <li><a href="#steckbrief">Steckbrief</a></li>
+      <li><a href="#werkzeuge">Werkzeuge</a></li>
       <li><a href="#texte">Texte</a></li>
       <li><a href="#kontakt">Kontakt</a></li>
-      <li><a href="#impressum">Impressum</a></li>
-      <li><a href="#datenschutz">Datenschutz</a></li>
     </ul>
   </div>
 </nav>
@@ -84,23 +88,55 @@
 
   <section id="hero">
     <p class="kicker">redaktionsschmiede.de</p>
-    <h1>Das ist die RedaktionsSchmiede.</h1>
-    <p class="hero-sub">Redaktionen haben oft viel zu tun und zu wenig Zeit für Tools.</p>
-    <p>Hier gibt es ein paar Werkzeuge aus dem journalistischen Alltag – gratis, für alle. Gebaut von Simon: Geograph, Journalist, KI-Berater beim MDR.</p>
-    <div class="mission">Weil niemand Zeit hat, das Rad ständig neu zu erfinden. Lasst uns die Medienwelt zusammen zukunftsfähig machen.</div>
+    <h1>Hi, ich bin Simon Hrubesch.</h1>
+    <p class="hero-sub">Geograph, Journalist, KI-Berater. Die RedaktionsSchmiede ist meine Werkstatt: Ich sammle Medieninhalte, werte sie aus und baue die Werkzeuge dafür selbst. Was davon nützlich ist, steht hier – gratis, für alle.</p>
+    <div class="mission">Meine Überzeugung: Inhalte werden künftig durch Metadaten beschrieben – und dadurch auswertbar, vergleichbar, besser verständlich. Im Journalismus will ich vorlegen, wie das geht.</div>
     <a class="cta" href="https://github.com/redaktionsschmiede/redaktionsschmiede.de">Wer nachbauen will: Code auf GitHub</a>
   </section>
 
-  <section id="werkstatt">
-    <p class="kicker">Werkstatt</p>
-    <h2>Wie die Schmiede arbeitet</h2>
-    <p>Die RedaktionsSchmiede sammelt Medieninhalte, wertet sie aus und baut die Werkzeuge dafür selbst. Gebaut wird, was eine Frage beantwortet – nicht, was gerade möglich ist. Prototypen gelten als Erkenntnisinstrumente: Sie sollen zeigen, ob etwas funktioniert, nicht perfekt sein. Und Werkzeuge sollen gebaut und wieder übergeben werden, nicht dauerhaft betreut.</p>
-    <p>Die Grundüberzeugung dahinter: Inhalte werden künftig durch Metadaten beschrieben – und dadurch auswertbar, vergleichbar, besser verständlich. Deshalb beginnt hier jedes Werkzeug mit der Beschreibung der Daten, nicht mit der Ausgabe.</p>
-    <p>Hinter der Werkstatt steht Simon Hrubesch. Geographie studiert - da meistens Datenkram gemacht, dann Volontariat und Reporter beim ZDF, Product Manager beim RedaktionsNetzwerk Deutschland, beim NDR die technische Infrastruktur hinter Content-Analysen aufgebaut: Datenmodelle, Pipelines, Auswertungen, Automatisierung. Ab Dezember 2026 im KI-Bereich des MDR in Leipzig. Diese Seite ist davon unabhängig und ist mein Privatprojekt.</p>
+  <section id="haltung">
+    <p class="kicker">Haltung</p>
+    <h2>Wofür ich stehe</h2>
+    <p>Vier Dinge, an denen ich mich orientiere – im Job wie in der Werkstatt:</p>
+    <ol class="haltung">
+      <li>
+        <strong>Beschreiben statt raten.</strong>
+        <p>Jede Auswertung beginnt mit der Beschreibung der Daten: Herkunft, Kategorie, Region, Rechtestatus. Erst wenn das stimmt, stimmt auch, was danach kommt.</p>
+      </li>
+      <li>
+        <strong>Bauen und übergeben.</strong>
+        <p>Werkzeuge gehören denen, die sie brauchen. Ich baue gern – aber ich will Dinge nicht dauerhaft selbst betreuen.</p>
+      </li>
+      <li>
+        <strong>KI ist ein Werkzeug, kein Ziel.</strong>
+        <p>Ich baue nichts, weil es gerade möglich ist, sondern weil es eine Frage beantwortet.</p>
+      </li>
+      <li>
+        <strong>Prototypen sind Erkenntnisinstrumente.</strong>
+        <p>Sie sollen zeigen, ob etwas funktioniert. Perfekt müssen sie dafür nicht sein.</p>
+      </li>
+    </ol>
   </section>
 
-  <section id="tools">
-    <p class="kicker">Tools</p>
+  <section id="steckbrief">
+    <p class="kicker">Steckbrief</p>
+    <h2>Vom Sendeplatz zur Datenpipeline</h2>
+    <p>Geographie studiert – mit zwei Arbeiten, die ich nie als Geographie empfand: Bevölkerungsdynamik in Leipzig und die Bewegungsmuster von Fahrradverleihsystemen in Hamburg. Im Grunde scraping, aggregieren, Muster finden, Karten bauen. Seitdem ist der Weg konsequent:</p>
+    <dl class="werk">
+      <dt>ZDF <span class="status">(Volontariat, Reporter)</span></dt>
+      <dd>Erst Sendeplätze, dann der Blick hinter die Systeme, die Redaktionen jeden Tag tragen.</dd>
+      <dt>RedaktionsNetzwerk Deutschland <span class="status">(Product Manager)</span></dt>
+      <dd>Zwischen Redaktion, Technik und Produkt: verstanden, was Werkzeuge brauchbar macht.</dd>
+      <dt>NDR <span class="status">(Infrastruktur)</span></dt>
+      <dd>Die technische Infrastruktur hinter Content-Analysen aufgebaut: Datenmodelle, Pipelines, Auswertungen, Automatisierung. Das meiste davon unsichtbar unter dem, was andere zu sehen bekommen.</dd>
+      <dt>MDR <span class="status">(ab Dezember 2026)</span></dt>
+      <dd>Im KI-Bereich, Leipzig.</dd>
+    </dl>
+    <p class="note">Diese Seite ist davon unabhängig und ist mein Privatprojekt.</p>
+  </section>
+
+  <section id="werkzeuge">
+    <p class="kicker">Werkstatt</p>
     <h2>Werkzeuge, frei für alle</h2>
     <p>Nichts davon ist ein Produkt. Was hier steht, darf benutzt und nachgebaut werden; wo Code öffentlich ist, führt der Link ins Repository. Jedes Projekt hat einen ehrlichen Stand:</p>
     <dl class="werk">
@@ -125,7 +161,7 @@
 
   <section id="kontakt">
     <p class="kicker">Kontakt</p>
-    <h2>Schreiben Sie der Schmiede</h2>
+    <h2>Schreiben Sie mir</h2>
     <p>Wenn Sie Fragen haben, ein Werkzeug ausprobieren wollen oder eine Beobachtung aus Ihrer Redaktion loswerden: <a href="mailto:info@redaktionsschmiede.de">E-Mail genügt</a>. Alles wird gelesen, meist kommt zeitnah eine Antwort.</p>
   </section>
 
