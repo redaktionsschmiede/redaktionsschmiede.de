@@ -1,0 +1,308 @@
+<!doctype html>
+<html lang="de">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta name="description" content="Was gebaut wurde: Projekt-Fälle aus NDR und RND mit Zahlen und Belegen, dazu journalistische Arbeitsproben aus ZDF und RND – die Arbeit von Simon Hrubesch." />
+<link rel="canonical" href="https://redaktionsschmiede.de/arbeit/" />
+<title>Schmiedestücke &amp; Arbeitsproben · Simon Hrubesch</title>
+<style>
+  :root {
+    --ink: #e8e6e3;
+    --ink-soft: #a8a29e;
+    --paper: #1c1917;
+    --line: #3b3633;
+    --accent: #f59e0b;
+    --accent-soft: #2a231d;
+    --card: #262220;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+    color: var(--ink);
+    background: var(--paper);
+    line-height: 1.65;
+  }
+  a { color: var(--accent); }
+  nav { position: sticky; top: 0; z-index: 10; background: var(--paper); border-bottom: 1px solid var(--line); }
+  nav .inner { max-width: 720px; margin: 0 auto; padding: 0.9rem 1.5rem; display: flex; justify-content: space-between; align-items: baseline; gap: 1rem; flex-wrap: wrap; }
+  .brand { font-weight: 700; color: var(--ink); text-decoration: none; }
+  .brand span { color: var(--accent); }
+  nav ul { display: flex; gap: 1.1rem; list-style: none; flex-wrap: wrap; }
+  nav ul a { color: var(--ink-soft); text-decoration: none; font-size: 0.9rem; }
+  nav ul a:hover { color: var(--ink); }
+  nav ul a.cur { color: var(--accent); }
+  main { max-width: 720px; margin: 0 auto; padding: 3.5rem 1.5rem 0; }
+  .kicker { text-transform: uppercase; letter-spacing: 0.18em; font-size: 0.72rem; color: var(--accent); font-weight: 600; margin-bottom: 1.2rem; }
+  h2 { font-size: 1.45rem; margin-top: 4.5rem; font-weight: 700; }
+  h3 { font-size: 1.05rem; margin-top: 2.2rem; font-weight: 700; }
+  p { margin-top: 1rem; }
+  .soft { color: var(--ink-soft); }
+  figure { margin: 1.8rem 0 0; }
+  figure img { display: block; width: 100%; border-radius: 10px; border: 1px solid var(--line); }
+  figcaption { font-size: 0.8rem; color: var(--ink-soft); margin-top: 0.45rem; }
+  .station { margin-top: 1.8rem; }
+  .station h4 { font-size: 0.95rem; }
+  .station .zeit { color: var(--ink-soft); font-size: 0.85rem; font-weight: 400; }
+  .case {
+    margin-top: 2rem; padding: 1.4rem 1.5rem; border: 1px solid var(--line);
+    border-radius: 10px; background: var(--card);
+  }
+  .case h3 { margin-top: 0; }
+  .case .meta { display: flex; flex-wrap: wrap; gap: 0.4rem; margin-top: 0.6rem; }
+  .tag {
+    font-size: 0.72rem; letter-spacing: 0.06em; text-transform: uppercase;
+    border: 1px solid var(--line); border-radius: 999px; padding: 0.15rem 0.7rem;
+    color: var(--ink-soft); background: var(--paper);
+  }
+  .case dt { font-weight: 700; margin-top: 0.9rem; font-size: 0.85rem; text-transform: uppercase; letter-spacing: 0.08em; }
+  .case dd { margin-top: 0.2rem; }
+  .roles { font-size: 0.92rem; color: var(--ink-soft); }
+  ul.samples { margin-top: 1rem; padding-left: 1.1rem; }
+  ul.samples li { margin-top: 0.7rem; }
+  ul.samples .quelle { color: var(--ink-soft); font-size: 0.88rem; }
+  footer {
+    margin-top: 5rem; border-top: 1px solid var(--line); padding: 2rem 1.5rem 4rem;
+    font-size: 0.88rem; color: var(--ink-soft);
+  }
+  footer .inner { max-width: 720px; margin: 0 auto; }
+  footer h3 { font-size: 0.9rem; text-transform: uppercase; letter-spacing: 0.1em; color: var(--ink); }
+  footer p { margin-top: 0.6rem; }
+  @media print {
+    body { background: #fff; color: #1c1917; }
+    a { color: #b45309; }
+    .case { background: #fff; border-color: #e7e5e4; break-inside: avoid; }
+    footer { color: #57534e; }
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="inner">
+    <a class="brand" href="/">Redaktions<span>Schmiede</span></a>
+    <ul>
+      <li><a href="/">Start</a></li>
+      <li><a class="cur" href="/arbeit/">Arbeit</a></li>
+      <li><a href="/blog/">Blog</a></li>
+    </ul>
+  </div>
+</nav>
+
+<main>
+
+<section id="steckbrief">
+  <p class="kicker">Steckbrief</p>
+  <h2>Vom Sendeplatz zur Datenpipeline</h2>
+  <p class="soft">Sozialgeographie studiert – und schon dort fasziniert davon, soziale Prozesse durch die Verschränkung von Daten auf eine neue Art und Weise anschaulich zu machen: In der Bachelorarbeit die Bevölkerungsdynamik in Leipzig seit der Wende erklärt, aus Daten der Einwohnermeldeämter; in der Masterarbeit die Bewegungsmuster von Leihfahrrädern in Hamburg während der Coronazeit aus vier Monaten gescrapten Daten. Seit 2015 also: scraping, aggregieren, Muster finden, Karten bauen. Seitdem ist der Weg konsequent:</p>
+
+  <div class="station">
+    <h4>ZDF <span class="zeit">Volontariat, Reporter</span></h4>
+    <p>Erst Sendeplätze, dann der Blick hinter die Systeme, die Redaktionen jeden Tag tragen. Aus dieser Zeit stammen die Datenreportagen unten. Ein Höhepunkt: vier Wochen Vor Ort in Emden, März 2023 – ein ZDF-Bürgerprojekt mit Beiträgen für drehscheibe, Volle Kanne, Länderspiegel, ZDFheute und mehr.</p>
+    <figure>
+      <img src="img/emden.jpg" alt="Simon Hrubesch mit ZDF-Mikrofon vor Ort in Emden, im Hintergrund Kameramann Thomas Henke" loading="lazy" decoding="async" onerror="this.closest('figure').style.display='none'" />
+      <figcaption>Vor Ort in Emden, März 2023 – mit Kameramann Thomas Henke. Foto: Roman Pawlowski, ZDF</figcaption>
+    </figure>
+  </div>
+
+  <div class="station">
+    <h4>RedaktionsNetzwerk Deutschland (RND) <span class="zeit">Product Manager</span></h4>
+    <p>Zwischen Redaktion, Technik und Produkt: verstanden, was Werkzeuge brauchbar macht – und als operativer Arm die Wenden großer Strategien tatsächlich umgesetzt, nicht nur besprochen. Herausgekommen: die Werkzeug-Infrastruktur eines Verlagsnetzes, von 16 automatisierten WhatsApp-Kanälen bis zum Ticketsystem. Ich war Product Manager des Content-Management-Systems Arc XP – Administrator des Systems, Hauptverantwortlicher für System und Weiterentwicklung. Details in den Fällen unten.</p>
+  </div>
+
+  <div class="station">
+    <h4>NDR <span class="zeit">2023–2026 · Infrastruktur &amp; Audience Development</span></h4>
+    <p>Die technische Infrastruktur hinter Content-Analysen aufgebaut: Datenmodelle, Pipelines, Automatisierung, Auswertungen. Seit März 2026 von Null aufgebaut: <strong>47 Automatisierungen</strong>, <strong>21 Datenbanken</strong>, ein Datenpool von <strong>14.000 erfassten Content-Elementen</strong> inklusive Volltext und Metadaten (Stand: November 2026). Das meiste davon unsichtbar unter dem, was andere zu sehen bekommen – hier liegt es offen.</p>
+  </div>
+
+  <div class="station">
+    <h4>MDR <span class="zeit">ab Dezember 2026 · KI-Desk, Leipzig</span></h4>
+    <p>Beraten und steuern, wie Redaktionen KI-Systeme bekommen, die funktionieren.</p>
+  </div>
+
+  <p class="soft">Diese Seite ist davon unabhängig und ist mein Privatprojekt.</p>
+</section>
+
+<section id="schmiedestuecke">
+  <p class="kicker">Schmiedestücke</p>
+  <h2>Was gebaut wurde</h2>
+  <p class="soft">Fälle aus zwei Häusern – tiefe Fälle statt Titelsammlung. Jede Zahl nennt ihre Herkunft; was nicht belegt werden kann, steht hier nicht. Nicht nachbaubar sind hier die Häuser-Systeme; was nachbaubar ist, steht auf der Startseite in der Werkstatt.</p>
+
+  <article class="case" id="regionalindex">
+    <h3>Der Regionalindex: Wo berichtet das Land über sich selbst?</h3>
+    <div class="meta"><span class="tag">NDR</span><span class="tag">KI-Extraktion</span><span class="tag">Automatisierung</span><span class="tag">Karten</span></div>
+    <figure>
+      <img src="img/regionalindex-karte.jpg" alt="Karte Niedersachsens: Veröffentlichungen mit Ortsbezug je Landkreis, Regionalindex Niedersachsen" loading="lazy" decoding="async" onerror="this.closest('figure').style.display='none'" />
+      <figcaption>Regionalindex Niedersachsen: Veröffentlichungen mit Ortsbezug je Landkreis, 7-Tage-Ansicht (Stand: November 2026) · Karte: NDR</figcaption>
+    </figure>
+    <dl>
+      <dt>Problem</dt>
+      <dd>Eine Landesfunkhaus-Redaktion weiß nicht systematisch, über welche Orte sie eigentlich berichtet – Regionalität blieb Bauchgefühl.</dd>
+      <dt>Was gebaut wurde</dt>
+      <dd>Eine Pipeline, die veröffentlichte Artikel automatisch auswertet: KI-Extraktion von Ortsbezügen, Abgleich mit einer Referenz-Gemeindedatenbank, Zählung je Landkreis, Visualisierung als interaktive Karte, nächtliche Aktualisierung bei Änderungen.</dd>
+      <dt>Rollen</dt>
+      <dd class="roles">Idee und Anforderungsmanagement: <strong>Patrick Weinhold</strong>, Programmmanager NDR Landesfunkhaus Niedersachsen. Konzept, Datenmodell, Extraktionslogik, Automatisierung: ich.</dd>
+      <dt>Ergebnis</dt>
+      <dd>Offizieller Start am 12.11.2026; die Auswertung läuft seit Anfang Oktober und findet seither täglich rund 100 neue Ortsbezüge je Artikelbestand – jeder mit vollständiger Metadaten-Spur (Fundstelle im Artikel, Ortstyp, Begründung der Zuordnung), die aggregiert als Karte der <strong>38 Landkreise und 8 kreisfreien Städte</strong> Niedersachsens im 7- und 28-Tage-Fenster dasteht. Nach dem Launch: hausweite Teilung durch die NDR-Kommunikation, Anfragen mehrerer Landesfunkhäuser und Hauptredaktionen.</dd>
+      <dt>Stand</dt>
+      <dd>In Betrieb beim NDR; Rollout über weitere Bereiche wird dort geprüft. Ich bin nicht mehr beteiligt – die Übergabe ist dokumentiert.</dd>
+      <dt>Was man sehen kann</dt>
+      <dd>Die Karte oben: reale Auswertung, 7-Tage-Ansicht.</dd>
+    </dl>
+  </article>
+
+  <article class="case" id="postomat">
+    <h3>Der Postomat: Vom sechs-Systeme-Prozess zu einem Werkzeug</h3>
+    <div class="meta"><span class="tag">NDR</span><span class="tag">WhatsApp</span><span class="tag">Prozess</span><span class="tag">Messung</span></div>
+    <dl>
+      <dt>Problem</dt>
+      <dd>Ein Posting durchlief sechs, sieben Systeme – CMS, Website, Word, Excel, Linkshortener, Planung. Am Ende stand ein Post, den keins der Systeme fehlerfrei nachvollziehen konnte.</dd>
+      <dt>Was gebaut wurde</dt>
+      <dd>Ein Tool, das den Prozess in einem Werkzeug bündelt: Redaktion fügt ein bis drei Links ein und erhält den fertigen Post samt Tracking-Parametern und Kurzlinks; alle Eingaben fließen automatisch in eine Datenbank – die Basis für jede spätere Kanal-Auswertung. Auf diesen Daten aufbauend ein interaktives Analytics-Dashboard, das erstmals systematisch beantwortet, was bei den Menschen ankommt, die dem Haus im Messenger folgen.</dd>
+      <dt>Ergebnis</dt>
+      <dd>Fünf regionale WhatsApp-Kanäle mit zusammen <strong>55.000 Followern</strong>; über <strong>400 Posts</strong> bislang über den Postomat erstellt – sechs, sieben Systemwechsel eingedampft auf einen einzigen Klick, jeden Post automatisch erfasst und auswertbar.</dd>
+      <dt>Meine Rolle</dt>
+      <dd class="roles">Tool-Entwicklung (gemeinsam mit Kolleg:innen der Produktionstechnik des Hauses); Analytics-Dashboard: ich.</dd>
+      <dt>Was man sehen kann</dt>
+      <dd>&lt;&lt;Screenshot Postomat-Oberfläche · anonymisierte Dashboard-Ansicht&gt;&gt;</dd>
+    </dl>
+  </article>
+
+  <article class="case" id="zeitextraktor">
+    <h3>Vom Auftrag zum Werkzeug in drei Tagen: Der Zeitextraktor</h3>
+    <div class="meta"><span class="tag">NDR</span><span class="tag">Prototyp</span><span class="tag">Redaktioneller Alltag</span></div>
+    <dl>
+      <dt>Problem</dt>
+      <dd>Redaktionelle Planung verpasste Sendeplatz- und Beitragszeiten, weil die Daten nirgends strukturiert lagen.</dd>
+      <dt>Was gebaut wurde</dt>
+      <dd>Ein Tool, das Planungsdaten automatisch um Zeitangaben ergänzt – von der Idee zweier Kolleg:innen bis zum einsatzfähigen Prototyp in drei Tagen. Danach in laufender Nutzung durch die redaktionelle Planung.</dd>
+      <dt>Rollen</dt>
+      <dd class="roles">Idee: redaktionelle Planung. Umsetzung: ich.</dd>
+      <dt>Belege</dt>
+      <dd>&lt;&lt;Screenshot/abstrahierte Darstellung · Nutzungsindikator · Nutzerreaktion als Zitat, wenn freigegeben&gt;&gt;</dd>
+    </dl>
+  </article>
+
+  <article class="case" id="fuenf-in-fuenf">
+    <h3>RND: „5 in 5“ – eine Newsletter-Architektur, die heute noch läuft</h3>
+    <div class="meta"><span class="tag">RND</span><span class="tag">Architektur</span><span class="tag">CMS</span><span class="tag">Systemverschränkung</span></div>
+    <dl>
+      <dt>Problem</dt>
+      <dd>Ein neues Newsletter-Format („5 in 5“) erforderte eine komplett neue Architektur im Content-Management-System und eine neue Anbindung zwischen CMS und Planungssystem. Die externe IT-Firma, die die Systeme betreibt, stieß bei der Architektur an ihre Grenzen.</dd>
+      <dt>Was gebaut wurde</dt>
+      <dd>Ich wurde beauftragt, das externe Betreiber-Team bei der architektonischen Planung zu unterstützen – und habe die Architektur entworfen, die bis heute im Einsatz ist. Es war die Arbeit, an der ich für mich festhielt: Komplexe Systeme miteinander verschränken und aus bestehenden Bausteinen eine neue Logik bauen – das ist mein Kerngeschäft.</dd>
+      <dt>Ergebnis</dt>
+      <dd>Das Format läuft täglich von Montag bis Freitag und wurde vielfach neu ausgerollt – als nationale Ausgabe „Die Welt 5 in 5“ ebenso wie als regionale Varianten bei Partnertiteln des Verlagsnetzes (z. B. „Dresden 5 in 5“) – jeweils auf einer Architektur, die in dieser Form auf diesen Entwurf zurückgeht.</dd>
+      <dt>Meine Rolle</dt>
+      <dd class="roles">Architektonische Planung und Entwurf der Systemlogik.</dd>
+      <dt>Was man sehen kann</dt>
+      <dd><a href="https://www.rnd.de/newsletter/5-in-5/">Die Ausgabe des Formats beim RND</a> · <a href="https://www.rnd.de/themen/der-tag/">Die Themenübersicht „Die Welt 5 in 5“</a> · <a href="https://www.saechsische.de/newsletter/dresden-5-in-5/">Eine regionale Variante: „Dresden 5 in 5“</a></dd>
+    </dl>
+  </article>
+
+  <article class="case" id="whatsapp-kanaele">
+    <h3>RND: 16 WhatsApp-Kanäle mit eigener Infrastruktur</h3>
+    <div class="meta"><span class="tag">RND</span><span class="tag">WhatsApp</span><span class="tag">APIs</span><span class="tag">Tracking</span></div>
+    <dl>
+      <dt>Problem</dt>
+      <dd>Ein Verlagsnetz möchte Messenger-Reichweite aufbauen – aber ohne Workflows und ohne Messung bleiben Kanäle Bauchgefühl.</dd>
+      <dt>Was gebaut wurde</dt>
+      <dd>16 WhatsApp-Kanäle samt zugehöriger Workflows und Trackingsysteme, über APIs angebunden: vom Post bis zur Auswertung in einer Datenstruktur.</dd>
+      <dt>Ergebnis</dt>
+      <dd>Rund 150.000 generierte User, über 1 Mio. Visits und 240 Plus-Abos. &lt;&lt;Zahlen sind Stand der Erhebung – aktualisierte Werte einsetzen&gt;&gt;</dd>
+      <dt>Rollen</dt>
+      <dd class="roles">Konzept, Bau, Betrieb: ich. Anwender:innen: die Redaktionen.</dd>
+      <dt>Was man sehen kann</dt>
+      <dd>&lt;&lt;Screenshot Kanalübersicht oder Tracking-Datenstruktur&gt;&gt;</dd>
+    </dl>
+  </article>
+
+  <article class="case" id="ticketsystem">
+    <h3>RND: Ein Ticketsystem aus Basis-Werkzeugen</h3>
+    <div class="meta"><span class="tag">RND</span><span class="tag">MS Forms</span><span class="tag">Power Automate</span><span class="tag">Berechtigungskonzept</span></div>
+    <dl>
+      <dt>Problem</dt>
+      <dd>Neu- und Änderungsanträge für CMS-Accounts liefen unstrukturiert per E-Mail – ohne Nachvollziehbarkeit und ohne Sicherheitskonzept.</dd>
+      <dt>Was gebaut wurde</dt>
+      <dd>Ein eigenes Ticketsystem über MS Forms, Lists und Power Automate: standardisiert, teilautomatisiert, mit passendem Sicherheits- und Berechtigungskonzept für jede Antragsart.</dd>
+      <dt>Ergebnis</dt>
+      <dd>Über 360 abgegebene und bearbeitete Tickets seit Einführung (Mai 2024).</dd>
+      <dt>Was man sehen kann</dt>
+      <dd>&lt;&lt;Screenshot Formular/Listenansicht, anonymisiert&gt;&gt;</dd>
+    </dl>
+  </article>
+
+  <article class="case" id="linkshortener">
+    <h3>RND: Ein Linkshortener als Verlags-Dienst</h3>
+    <div class="meta"><span class="tag">RND</span><span class="tag">Marktscreening</span><span class="tag">Rollout</span><span class="tag">Schulung</span></div>
+    <dl>
+      <dt>Problem</dt>
+      <dd>Tausende geteilte Links im Verlagsnetz – verstreut, uneinheitlich, nicht auswertbar.</dd>
+      <dt>Was gebaut wurde</dt>
+      <dd>Marktscreening, Einführung, Schulung und Weiterentwicklung eines Linkshortener-Tools für das gesamte Verlagsnetz.</dd>
+      <dt>Ergebnis</dt>
+      <dd>Über 1,3 Mio. Visits auf rund 10.000 gekürzte Links (seit März 2024).</dd>
+      <dt>Was man sehen kann</dt>
+      <dd>&lt;&lt;Screenshot Auswertung&gt;&gt;</dd>
+    </dl>
+  </article>
+
+  <article class="case" id="weitere-rnd">
+    <h3>RND: Weitere Arbeiten, in einer Zeile</h3>
+    <div class="meta"><span class="tag">RND</span><span class="tag">Workflows</span><span class="tag">Sicherheit</span><span class="tag">Schulung</span></div>
+    <ul class="samples" style="margin-top:1rem;">
+      <li>Teilautomatisierte Podcast-Seitenpflege: stündliches Portfolio-Scraping mit automatischen To-dos fürs Sitemanagement</li>
+      <li>Automatische KI-Zusammenfassungen des Newsletter-Feedbacks per E-Mail, mit Redaktions-Cockpit für Empfängerkreis und Analysezeitraum</li>
+      <li>Automatischer Agenturvideo-Upload über Middleware, samt Slackbot und entworfenem Workflow</li>
+      <li>Automatisierte Audiotranskription mit E-Mail-Versand nach Abschluss</li>
+      <li>Product Manager des Content-Management-Systems Arc XP: Administrator des Systems, Hauptverantwortung für System und Weiterentwicklung, inklusive Pflege der Nutzer- und Berechtigungsstruktur</li>
+      <li>Schulungen für rund 100 Mitarbeitende (saechsische.de, haz.de) in den Redaktionssystemen Arc und Kordiam</li>
+    </ul>
+  </article>
+
+  <article class="case" id="infrastruktur">
+    <h3>Unsichtbares sichtbar machen: Infrastruktur in Zahlen</h3>
+    <div class="meta"><span class="tag">NDR</span><span class="tag">Datenmodelle</span><span class="tag">Betrieb</span></div>
+    <dl>
+      <dt>Was darunter liegt</dt>
+      <dd>Über zwei Häuser: Beim RND liefen unter 20 produktive Flows; beim NDR sind es <strong>47 Automatisierungen</strong> und <strong>21 Datenbanken</strong> – seit März 2026 von Null aufgebaut, KI-assistiert: Web-Erfassung des gesamten Artikelbestands per RSS (14.000 Content-Elemente mit Volltext und Metadaten), Analytics-Anbindungen, Maskierung personenbezogener Daten vor jeder KI-Verarbeitung, wöchentliche Sicherungen – und eine Systemdokumentation, mit der das System ohne Spezialwissen weiterläuft und übergeben werden kann. Übergabefähigkeit statt Perfektion. Stand: November 2026.</dd>
+    </dl>
+  </article>
+</section>
+
+<section id="veroeffentlichungen">
+  <p class="kicker">Arbeitsproben</p>
+  <h2>Woher ich komme: Redaktion</h2>
+  <p class="soft">Journalismus bleibt der Maßstab – auch für die Werkzeuge. Daten und Analyse zuerst, dann die Breite. Jede Probe ist verlinkt:</p>
+  <ul class="samples">
+    <li><a href="https://zdf.shorthandstories.com/intensivstationen-in-dramatischer-lage-zdfheute/">ZDFheute · Datenreportage: Intensivstationen in dramatischer Lage</a> <span class="quelle">– Zahlen und Zitate aus den Kliniken, eingeordnet. Aus dieser Arbeit entstanden später die ersten Werkzeuge der Schmiede.</span></li>
+    <li><a href="https://www.rnd.de/politik/linken-vorschlag-keine-hausaufgaben-oder-noten-mehr-wie-steht-es-um-unsere-bildung-K7QXJYXTHZAELKLLALOTUT3OWY.html">RND · Datenreportage: Keine Hausaufgaben und keine Noten mehr: Wie steht es um unsere Bildung?</a></li>
+    <li><a href="https://www.rnd.de/politik/iran-ein-jahr-nach-protest-beginn-amnesty-international-fordert-druck-zu-erhoehen-QHIY7G7DKBBZXDLD2SXTP3FMXQ.html">RND · Iran, ein Jahr nach Protest-Beginn</a> <span class="quelle">– Amnesty International fordert, den Druck auf Teheran zu erhöhen.</span></li>
+    <li><a href="https://www.zdfheute.de/video/heute-journal/der-rubel-rollt-nach-unten-100.html">ZDFheute · heute journal: Der Rubel rollt nach unten</a> <span class="quelle">– wenn der Kurs selbst zur Nachricht wird.</span></li>
+    <li><a href="https://www.zdf.de/nachrichten/heute-journal-update/luhnsk-nahezu-unter-russischer-kontrolle-100.html">ZDFheute · heute journal Update: Luhansk nahezu unter russischer Kontrolle</a> <span class="quelle">– Russlands Vormarsch in der Ostukraine, eine Lageeinschätzung.</span></li>
+    <li><a href="https://www.zdfheute.de/video/heute-journal-update/cuxhaven-offshore-windpark-100.html">ZDFheute · heute journal Update: Offshore-Windpark vor Cuxhaven</a> <span class="quelle">– vor Ort, wo die Energiewende aus dem Wasser ragt.</span></li>
+    <li><a href="https://www.zdf.de/nachrichten/heute-in-deutschland/kreuzfahrtschiffe-mit-lng-100.html">ZDF · heute in Deutschland: Kreuzfahrtschiffe mit LNG</a> <span class="quelle">– über die Emissionen der schwimmenden Riesen.</span></li>
+    <li><a href="https://www.zdf.de/politik/laenderspiegel/engagierte-ostfriesen-in-emden-100.html">ZDF · Länderspiegel: Engagierte Ostfriesen in Emden</a> <span class="quelle">– vier Wochen Vor Ort, über ehrenamtliches Engagement und Zusammenhalt in der Stadt.</span></li>
+    <li><a href="https://www.zdf.de/nachrichten/heute-in-deutschland/plattdeutsch-lebt-100.html">ZDF · heute in Deutschland: Plattdeutsch lebt</a> <span class="quelle">– in Emden ist Plattdeutsch Teil der Identität, auch an Schulen.</span></li>
+    <li><a href="https://presseportal.zdf.de/pressemitteilung/in-ostfrieslands-groesster-stadt-zdf-in-emden">ZDF · Presse: In Ostfrieslands größter Stadt: ZDF in Emden</a> <span class="quelle">– die Projektbeschreibung zum ZDF-Auftritt vor Ort.</span></li>
+    <li>ZDFzoom · <strong>9/11 – Ein Tag im September</strong> <span class="quelle">– 08.09.2021, BBC-Produktion; Redaktion der deutschen Fassung: ich. Belege: <a href="https://www.presseportal.de/pm/7840/5011627">ZDF-Pressemitteilung „20 Jahre 9/11“</a>, <a href="https://www.imdb.com/title/tt12922454/fullcredits">IMDb</a>.</span></li>
+  </ul>
+  <p class="soft">Rund hundert Filme und Beiträge für das ZDF, dazu die Arbeit in zwei Verlagsnetzen. Bevor ich Systeme baute, habe ich Geschichten gemacht. Extern nachweisbar: mein <a href="https://www.imdb.com/name/nm12210679/">IMDb-Profil</a> und meine <a href="https://www.rnd.de/autoren/simon-hrubesch/">Autorenseite beim RND</a>.</p>
+</section>
+
+</main>
+
+<footer>
+  <div class="inner">
+    <h3>Impressum</h3>
+    <p><strong>Diensteanbieter:</strong> Simon Hrubesch, c/o POSTFLEX PFX-986-733, Emsdettener Straße 10, 48268 Greven · E-Mail: info [at] redaktionsschmiede.de</p>
+    <p><strong>Verantwortlich gemäß § 18 Abs. 2 MStV:</strong> Simon Hrubesch, Anschrift wie oben.</p>
+    <h3 style="margin-top:1.5rem;">Datenschutz</h3>
+    <p>Diese Seite kommt ohne Cookies, ohne Tracking-Pixel und ohne Analyse-Dienste mit Personenbezug aus. Beim Aufruf werden technisch notwendige Verbindungsdaten verarbeitet.</p>
+    <p><strong>Hosting:</strong> Auslieferung über das Edge-Netz von Cloudflare. Beim Seitenaufruf wird Ihre IP-Adresse zur Auslieferung und zum Schutz der Seite verarbeitet; Rechtsgrundlage ist Art. 6 Abs. 1 lit. f DSGVO. Mit Cloudflare besteht ein Vertrag zur Auftragsverarbeitung. Daten können dabei auch in Drittländer, insbesondere in die USA, übermittelt werden; die Übermittlung ist durch die vom Anbieter bereitgestellten Standardvertragsklauseln und technische Maßnahmen abgesichert.</p>
+    <p><strong>Kontakt:</strong> Anfragen und Widersprüche an: info [at] redaktionsschmiede.de</p>
+  </div>
+</footer>
+
+</body>
+</html>
