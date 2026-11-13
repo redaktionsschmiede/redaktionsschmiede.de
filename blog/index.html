@@ -3,104 +3,56 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Blog · Simon Hrubesch – RedaktionsSchmiede</title>
 <meta name="description" content="Blog zu Methoden, KI im Journalismus und eigenen Auswertungen von Simon Hrubesch. Unregelmäßig, ohne Redaktionsplan." />
 <link rel="canonical" href="https://redaktionsschmiede.de/blog/" />
-<title>Blog · Simon Hrubesch – RedaktionsSchmiede</title>
-<style>
-  :root {
-    --ink: #e8e6e3;
-    --ink-soft: #a8a29e;
-    --paper: #1c1917;
-    --line: #3b3633;
-    --accent: #f59e0b;
-    --accent-soft: #2a231d;
-    --card: #262220;
-  }
-  * { box-sizing: border-box; margin: 0; padding: 0; }
-  body {
-    font-family: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
-    color: var(--ink);
-    background: var(--paper);
-    line-height: 1.65;
-  }
-  a { color: var(--accent); }
-  nav { position: sticky; top: 0; z-index: 10; background: var(--paper); border-bottom: 1px solid var(--line); }
-  nav .inner { max-width: 720px; margin: 0 auto; padding: 0.9rem 1.5rem; display: flex; justify-content: space-between; align-items: baseline; gap: 1rem; flex-wrap: wrap; }
-  .brand { font-weight: 700; color: var(--ink); text-decoration: none; }
-  .brand span { color: var(--accent); }
-  nav ul { display: flex; gap: 1.1rem; list-style: none; flex-wrap: wrap; }
-  nav ul a { color: var(--ink-soft); text-decoration: none; font-size: 0.9rem; }
-  nav ul a:hover { color: var(--ink); }
-  nav ul a.cur { color: var(--accent); }
-  main { max-width: 720px; margin: 0 auto; padding: 3.5rem 1.5rem 0; }
-  .kicker { text-transform: uppercase; letter-spacing: 0.18em; font-size: 0.72rem; color: var(--accent); font-weight: 600; margin-bottom: 1.2rem; }
-  h2 { font-size: 1.45rem; margin-top: 4.5rem; font-weight: 700; }
-  h3 { font-size: 1.05rem; margin-top: 2.2rem; font-weight: 700; }
-  p { margin-top: 1rem; }
-  .soft { color: var(--ink-soft); }
-  .essay { margin-top: 1.5rem; padding: 1.4rem 1.5rem; background: var(--card); border: 1px solid var(--line); border-radius: 10px; }
-  .essay h3 { margin-top: 0; font-size: 1.3rem; }
-  .essay p { color: var(--ink-soft); }
-  .essay p b, .essay p strong { color: var(--ink); }
-  footer {
-    margin-top: 5rem; border-top: 1px solid var(--line); padding: 2rem 1.5rem 4rem;
-    font-size: 0.88rem; color: var(--ink-soft);
-  }
-  footer .inner { max-width: 720px; margin: 0 auto; }
-  footer h3 { font-size: 0.9rem; text-transform: uppercase; letter-spacing: 0.1em; color: var(--ink); }
-  footer p { margin-top: 0.6rem; }
-  @media print {
-    body { background: #fff; color: #1c1917; }
-    a { color: #b45309; }
-    .essay { background: #fff; border-color: #e7e5e4; break-inside: avoid; }
-    .essay p { color: #57534e; }
-    footer { color: #57534e; }
-  }
-</style>
+<link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+<meta property="og:type" content="website" />
+<meta property="og:locale" content="de_DE" />
+<meta property="og:site_name" content="RedaktionsSchmiede" />
+<meta property="og:title" content="Blog · Simon Hrubesch – RedaktionsSchmiede" />
+<meta property="og:description" content="Methodennotizen, Einschätzungen zu KI im Journalismus und eigene Auswertungen. Unregelmäßig, ohne Redaktionsplan." />
+<meta property="og:url" content="https://redaktionsschmiede.de/blog/" />
+<link rel="stylesheet" href="/assets/site.css" />
 </head>
 <body>
+<a class="skip" href="#main">Zum Inhalt springen</a>
 
-<nav>
+<nav aria-label="Hauptnavigation">
   <div class="inner">
     <a class="brand" href="/">Redaktions<span>Schmiede</span></a>
     <ul>
       <li><a href="/">Start</a></li>
+      <li><a href="/#werkzeuge">Werkzeuge</a></li>
       <li><a href="/arbeit/">Arbeit</a></li>
-      <li><a class="cur" href="/blog/">Blog</a></li>
+      <li><a href="/blog/" aria-current="page">Blog</a></li>
+      <li><a href="/#kontakt">Kontakt</a></li>
     </ul>
   </div>
 </nav>
 
-<main>
+<main id="main">
 
-<section id="blog">
-  <p class="kicker">Gelegentlich</p>
-  <h2>Blog</h2>
-  <p class="soft">Methodennotizen, Einschätzungen zu KI im Journalismus und gelegentlich, was die eigenen Auswertungen zeigen – auch wenn sie nicht funktionieren. Unregelmäßig, ohne Redaktionsplan.</p>
-
-  <article class="essay">
-    <h3>Die Metadaten-Überzeugung, ausgeführt</h3>
-    <p class="soft" style="margin-top:0.2rem;">Erster Text · November 2026</p>
-    <p>Ich habe Bevölkerungsdynamik in Leipzig untersucht und die Bewegungsmuster von Fahrradverleihsystemen in Hamburg. Dabei habe ich eines gelernt: Man versteht ein System erst, wenn man es beschreiben kann. Zahlen, Kategorien, Orte – was zählt, wird gezählt. Nur so entsteht aus Einzelbeobachtung eine Landkarte.</p>
-    <p>Heute wende ich denselben Blick auf die Medienlandschaft an. Jeder Artikel, jede Meldung, jedes Video ist ein Objekt mit Eigenschaften: Thema, Ort, Quelle, Datum, Ressort, Rahmung. Diese Eigenschaften heißen Metadaten. Sie sind nicht neu. Neu ist, dass Maschinen sie lesen und auswerten können – und dass damit Fragen beantwortbar werden, die sonst im Bauchgefühl bleiben: Worum geht es gerade in der Medienwelt? Wie wird darüber berichtet? Was kommt an – und bei wem?</p>
-    <p>Meine These: Inhalte werden künftig durch Kombinationen von Metadaten beschrieben und dadurch für KI berechenbar. Die meisten Redaktionen haben das noch nicht begriffen. Journalismus sollte nicht abwarten, bis Plattformen es wieder vorgeben, sondern vorlegen, wie es geht: transparent, nachvollziehbar, im eigenen Interesse.</p>
-    <p>Was das konkret heißt? Jede Auswertung beginnt mit der Beschreibung der Daten, nicht mit der Ausgabe: Woher kommt der Inhalt, welche Kategorie, welche Region, was ist mit ihm erlaubt? Erst wenn das stimmt, stimmt auch, was danach kommt. Die Quellenkartei auf der Startseite ist so ein Anfang. Nichts Spektakuläres. Ein Anfang.</p>
-    <p>Wenn Sie das für Unsinn halten, schreiben Sie mir. Wenn Sie es für selbstverständlich halten und es längst anders machen, auch. Die Metadaten-Überzeugung ist keine Religion. Sie ist eine Arbeitshypothese mit Werkzeugkasten.</p>
-    <p class="soft">Weitere Texte entstehen unregelmäßig. Was ich nebenbei schreibe, steht auf <a href="https://www.linkedin.com/in/simonhrubesch/">LinkedIn</a>.</p>
-  </article>
-</section>
+  <section>
+    <p class="kicker">Gelegentlich</p>
+    <h1>Blog</h1>
+    <p>Methodennotizen, Einschätzungen zu KI im Journalismus und gelegentlich, was die eigenen Auswertungen zeigen – auch wenn sie nicht funktionieren. Unregelmäßig, ohne Redaktionsplan.</p>
+    <ul class="links">
+      <li>
+        <span class="meta">Erster Text · November 2026</span>
+        <a class="title" href="/blog/metadaten-ueberzeugung/">Die Metadaten-Überzeugung, ausgeführt</a>
+        <p>Warum ich glaube, dass Inhalte künftig über Kombinationen von Metadaten beschrieben und für KI berechenbar werden.</p>
+      </li>
+    </ul>
+    <p class="note">Was ich nebenbei schreibe, steht auf <a href="https://www.linkedin.com/in/simonhrubesch/">LinkedIn</a>.</p>
+  </section>
 
 </main>
 
 <footer>
   <div class="inner">
-    <h3>Impressum</h3>
-    <p><strong>Diensteanbieter:</strong> Simon Hrubesch, c/o POSTFLEX PFX-986-733, Emsdettener Straße 10, 48268 Greven · E-Mail: info@redaktionsschmiede.de</p>
-    <p><strong>Verantwortlich gemäß § 18 Abs. 2 MStV:</strong> Simon Hrubesch, Anschrift wie oben.</p>
-    <h3 style="margin-top:1.5rem;">Datenschutz</h3>
-    <p>Diese Seite kommt ohne Cookies, ohne Tracking-Pixel und ohne Analyse-Dienste mit Personenbezug aus. Beim Aufruf werden technisch notwendige Verbindungsdaten verarbeitet.</p>
-    <p><strong>Hosting:</strong> Auslieferung über das Edge-Netz von Cloudflare. Beim Seitenaufruf wird Ihre IP-Adresse zur Auslieferung und zum Schutz der Seite verarbeitet; Rechtsgrundlage ist Art. 6 Abs. 1 lit. f DSGVO. Mit Cloudflare besteht ein Vertrag zur Auftragsverarbeitung. Daten können dabei auch in Drittländer, insbesondere in die USA, übermittelt werden; die Übermittlung ist durch die vom Anbieter bereitgestellten Standardvertragsklauseln und technische Maßnahmen abgesichert.</p>
-    <p><strong>Kontakt:</strong> Anfragen und Widersprüche an: info@redaktionsschmiede.de</p>
+    <div>© 2026 RedaktionsSchmiede</div>
+    <div><a href="/impressum/">Impressum</a> · <a href="/datenschutz/">Datenschutz</a></div>
   </div>
 </footer>
 

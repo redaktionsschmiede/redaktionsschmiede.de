@@ -3,10 +3,16 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta http-equiv="Cache-Control" content="no-store, no-cache, must-revalidate, max-age=0" />
-    <meta http-equiv="Pragma" content="no-cache" />
-    <meta http-equiv="Expires" content="0" />
-    <meta name="description" content="Secret Masker: Markiert Geheimnisse und personenbezogene Angaben in Texten, bevor sie an fremde KI-Dienste gehen. Läuft vollständig im Browser – Texte verlassen diesen Browser niemals." />
+    <meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'unsafe-inline'; style-src 'unsafe-inline'; img-src 'self'; connect-src 'none'; form-action 'none'; base-uri 'none'" />
+    <meta name="description" content="Secret Masker: Markiert Zugangsdaten und personenbezogene Angaben in Texten, bevor sie an fremde KI-Dienste gehen. Läuft vollständig im Browser, der Text wird nicht gesendet." />
+    <link rel="canonical" href="https://redaktionsschmiede.de/masker/" />
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <meta property="og:type" content="website" />
+    <meta property="og:locale" content="de_DE" />
+    <meta property="og:site_name" content="RedaktionsSchmiede" />
+    <meta property="og:title" content="Secret Masker · RedaktionsSchmiede" />
+    <meta property="og:description" content="Markiert Zugangsdaten und personenbezogene Angaben in Texten, bevor sie an fremde KI-Dienste gehen. Läuft vollständig im Browser." />
+    <meta property="og:url" content="https://redaktionsschmiede.de/masker/" />
     <title>Secret Masker · RedaktionsSchmiede</title>
     <style>
       :root { font-family: Inter, system-ui, sans-serif; color: #111827; background: #f8fafc; }
@@ -43,6 +49,12 @@
       pre { margin-top: 8px; padding: 12px; background: #f3f4f6; border-radius: 8px; font-size: 12px; white-space: pre-wrap; word-break: break-word; }
       .legend { font-size: 12px; color: #6b7280; margin: 6px 0 0; }
       .privacy { margin-top: 18px; padding: 10px 14px; border-radius: 8px; background: #f0fdf4; color: #14532d; font-size: 12px; }
+      .limits { margin-top: 12px; padding: 10px 14px; border-radius: 8px; background: #fffbeb; color: #78350f; font-size: 12px; }
+      .limits p, .privacy p { margin: 0; }
+      .limits p + p, .privacy p + p { margin-top: 6px; }
+      footer { margin-top: 28px; padding-top: 14px; border-top: 1px solid #e5e7eb; font-size: 12px; color: #6b7280; display: flex; justify-content: space-between; gap: 12px; flex-wrap: wrap; }
+      footer a { color: #6b7280; }
+      footer a:hover { color: #111827; }
     </style>
   </head>
   <body>
@@ -76,8 +88,17 @@
       </details>
 
       <div class="privacy">
-        🔒 Datenschutz: Der Text verlässt diesen Browser niemals. Keine Cookies, kein localStorage/sessionStorage, kein Cache, keine Netzwerk-Calls – das Tool ist eine reine clientseitige Single-Page ohne Serverkontakt nach dem Laden. Alle IPv4-Adressen werden maskiert, auch interne (10.x, 172.16–31.x, 192.168.x) – einzelne Treffer lassen sich per ✓ ablehnen.
+        <p>🔒 Datenschutz: Der eingefügte Text wird ausschließlich in diesem Browser verarbeitet und nicht gesendet. Das Tool setzt keine Cookies, nutzt kein localStorage, sessionStorage oder IndexedDB und macht nach dem Laden keine Netzwerkaufrufe; eine Sicherheitsrichtlinie der Seite (Content-Security-Policy) verbietet sie zusätzlich. Der Quellcode ist offen: <a href="https://github.com/redaktionsschmiede/redaktionsschmiede.de/blob/main/masker/index.html">masker/index.html auf GitHub</a> (Apache-2.0).</p>
       </div>
+
+      <div class="limits">
+        <p><strong>Grenzen:</strong> Erkannt werden API-Keys und Tokens, Passwörter und Credentials, IDs und Hex-Strings, E-Mail-Adressen, Usernamen, Dateipfade, IP-Adressen (alle IPv4, auch interne), Webadressen, IBANs und Telefonnummern. Namen von Personen, Orte und andere Angaben im Fließtext werden nicht erkannt. Eine automatische Erkennung ist nie vollständig: Prüfen Sie das Ergebnis, bevor Sie Text an einen fremden KI-Dienst senden. Das Werkzeug wird ohne Gewähr bereitgestellt.</p>
+      </div>
+
+      <footer>
+        <span>© 2026 RedaktionsSchmiede</span>
+        <span><a href="/impressum/">Impressum</a> · <a href="/datenschutz/">Datenschutz</a></span>
+      </footer>
     </div>
     <script>
       // Hinweis: Dieses Tool speichert NICHTS – keine Cookies, kein localStorage,

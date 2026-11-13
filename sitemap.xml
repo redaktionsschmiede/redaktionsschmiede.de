@@ -1,7 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-  <url><loc>https://redaktionsschmiede.de/</loc><lastmod>2026-11-13</lastmod></url>
-  <url><loc>https://redaktionsschmiede.de/arbeit/</loc><lastmod>2026-11-13</lastmod></url>
-  <url><loc>https://redaktionsschmiede.de/blog/</loc><lastmod>2026-11-13</lastmod></url>
-  <url><loc>https://redaktionsschmiede.de/masker/</loc><lastmod>2026-11-13</lastmod></url>
+  <url><loc>https://redaktionsschmiede.de/</loc></url>
+  <url><loc>https://redaktionsschmiede.de/arbeit/</loc></url>
+  <url><loc>https://redaktionsschmiede.de/blog/</loc></url>
+  <url><loc>https://redaktionsschmiede.de/blog/metadaten-ueberzeugung/</loc></url>
+  <url><loc>https://redaktionsschmiede.de/masker/</loc></url>
+  <url><loc>https://redaktionsschmiede.de/impressum/</loc></url>
+  <url><loc>https://redaktionsschmiede.de/datenschutz/</loc></url>
 </urlset>

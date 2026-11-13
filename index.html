@@ -3,218 +3,180 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<meta name="description" content="Simon Hrubesch: Geograph, Journalist, KI-Berater. Die RedaktionsSchmiede ist seine Werkstatt: Datenpipelines und Auswertungen für Redaktionen, Werkzeuge frei für alle, belegte Arbeitsproben." />
-<link rel="canonical" href="https://redaktionsschmiede.de/" />
 <title>Simon Hrubesch · RedaktionsSchmiede</title>
-<style>
-  :root {
-    --ink: #e8e6e3;
-    --ink-soft: #a8a29e;
-    --paper: #1c1917;
-    --line: #3b3633;
-    --accent: #f59e0b;
-    --accent-soft: #2a231d;
-    --card: #262220;
-  }
-  * { box-sizing: border-box; margin: 0; padding: 0; }
-  body {
-    font-family: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
-    color: var(--ink);
-    background: var(--paper);
-    line-height: 1.65;
-  }
-  a { color: var(--accent); }
-  nav { position: sticky; top: 0; z-index: 10; background: var(--paper); border-bottom: 1px solid var(--line); }
-  nav .inner { max-width: 720px; margin: 0 auto; padding: 0.9rem 1.5rem; display: flex; justify-content: space-between; align-items: baseline; gap: 1rem; flex-wrap: wrap; }
-  .brand { font-weight: 700; color: var(--ink); text-decoration: none; }
-  .brand span { color: var(--accent); }
-  nav ul { display: flex; gap: 1.1rem; list-style: none; flex-wrap: wrap; }
-  nav ul a { color: var(--ink-soft); text-decoration: none; font-size: 0.9rem; }
-  nav ul a:hover { color: var(--ink); }
-  nav ul a.cur { color: var(--accent); }
-  main { max-width: 720px; margin: 0 auto; padding: 3.5rem 1.5rem 0; }
-  .kicker { text-transform: uppercase; letter-spacing: 0.18em; font-size: 0.72rem; color: var(--accent); font-weight: 600; margin-bottom: 1.2rem; }
-  h1 { font-size: 2rem; line-height: 1.2; font-weight: 700; }
-  h2 { font-size: 1.45rem; margin-top: 4.5rem; font-weight: 700; }
-  h3 { font-size: 1.05rem; margin-top: 2.2rem; font-weight: 700; }
-  p { margin-top: 1rem; }
-  .soft { color: var(--ink-soft); }
-  .lede { font-size: 1.08rem; }
-  .claim {
-    margin-top: 1.6rem; padding: 1rem 1.2rem; background: var(--accent-soft);
-    border-left: 3px solid var(--accent); border-radius: 0 6px 6px 0;
-  }
-  figure { margin: 1.8rem 0 0; }
-  figure img { display: block; width: 100%; border-radius: 10px; border: 1px solid var(--line); }
-  figure.small { max-width: 220px; }
-  figcaption { font-size: 0.8rem; color: var(--ink-soft); margin-top: 0.45rem; }
-  .principles { counter-reset: prin; margin-top: 1.5rem; }
-  .principles li {
-    list-style: none; counter-increment: prin; margin-top: 1.3rem;
-    padding-left: 2.4rem; position: relative;
-  }
-  .principles li::before {
-    content: counter(prin); position: absolute; left: 0; top: 0.1rem;
-    width: 1.6rem; height: 1.6rem; border-radius: 50%;
-    background: var(--ink); color: var(--paper); font-weight: 700;
-    display: flex; align-items: center; justify-content: center; font-size: 0.85rem;
-  }
-  .principles strong { display: block; margin-bottom: 0.15rem; }
-  .station { margin-top: 1.8rem; }
-  .station h4 { font-size: 0.95rem; }
-  .station .zeit { color: var(--ink-soft); font-size: 0.85rem; font-weight: 400; }
-  .tool { margin-top: 2rem; }
-  .tool .status {
-    display: inline-block; margin-left: 0.5rem; font-size: 0.75rem;
-    background: var(--paper); border: 1px solid var(--line);
-    border-radius: 999px; padding: 0.1rem 0.6rem; color: var(--ink-soft);
-  }
-  ul.samples { margin-top: 1rem; padding-left: 1.1rem; }
-  ul.samples li { margin-top: 0.7rem; }
-  ul.samples .quelle { color: var(--ink-soft); font-size: 0.88rem; }
-  footer {
-    margin-top: 5rem; border-top: 1px solid var(--line); padding: 2rem 1.5rem 4rem;
-    font-size: 0.88rem; color: var(--ink-soft);
-  }
-  footer .inner { max-width: 720px; margin: 0 auto; }
-  footer h3 { font-size: 0.9rem; text-transform: uppercase; letter-spacing: 0.1em; color: var(--ink); }
-  footer p { margin-top: 0.6rem; }
-  @media print {
-    body { background: #fff; color: #1c1917; }
-    a { color: #b45309; }
-    footer { color: #57534e; }
-  }
-</style>
+<meta name="description" content="Simon Hrubesch: Geograph, Journalist, KI-Berater. Die RedaktionsSchmiede ist seine Werkstatt – Werkzeuge für Redaktionen, gratis und für alle." />
+<link rel="canonical" href="https://redaktionsschmiede.de/" />
+<link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+<meta property="og:type" content="website" />
+<meta property="og:locale" content="de_DE" />
+<meta property="og:site_name" content="RedaktionsSchmiede" />
+<meta property="og:title" content="Simon Hrubesch · RedaktionsSchmiede" />
+<meta property="og:description" content="Geograph, Journalist, KI-Berater. Die RedaktionsSchmiede ist seine Werkstatt – Werkzeuge für Redaktionen, gratis und für alle." />
+<meta property="og:url" content="https://redaktionsschmiede.de/" />
+<meta property="og:image" content="https://redaktionsschmiede.de/img/portrait.jpg" />
+<meta name="twitter:card" content="summary" />
+<link rel="stylesheet" href="/assets/site.css" />
 </head>
 <body>
+<a class="skip" href="#main">Zum Inhalt springen</a>
 
-<nav>
+<nav aria-label="Hauptnavigation">
   <div class="inner">
     <a class="brand" href="/">Redaktions<span>Schmiede</span></a>
     <ul>
-      <li><a class="cur" href="/">Start</a></li>
+      <li><a href="/" aria-current="page">Start</a></li>
+      <li><a href="/#werkzeuge">Werkzeuge</a></li>
       <li><a href="/arbeit/">Arbeit</a></li>
       <li><a href="/blog/">Blog</a></li>
+      <li><a href="/#kontakt">Kontakt</a></li>
     </ul>
   </div>
 </nav>
 
-<main>
+<main id="main">
 
-<header>
-  <p class="kicker">RedaktionsSchmiede</p>
-  <h1>Hi, ich bin Simon Hrubesch.</h1>
-  <p class="lede">Geograph, Journalist, KI-Berater. Die RedaktionsSchmiede ist meine Werkstatt: Ich sammle Medieninhalte, werte sie aus und baue die Werkzeuge dafür selbst.</p>
-  <figure class="small">
-    <img src="img/portrait.jpg" alt="Simon Hrubesch" loading="lazy" decoding="async" onerror="this.closest('figure').style.display='none'" />
-    <figcaption>Foto: Ulrike Lenz, ZDF</figcaption>
-  </figure>
-  <p class="soft">Meine Überzeugung: Inhalte werden künftig durch Metadaten beschrieben – und dadurch auswertbar, vergleichbar, besser verständlich. Im Journalismus will ich vorlegen, wie das geht.</p>
-  <div class="claim">
-    <p style="margin:0;"><strong>Belegt statt behauptet:</strong> Seit 2015 baue ich Datenpipelines. Zuletzt beim NDR: 47 Automatisierungen und 21 Datenbanken in Eigenarbeit, KI-assistiert, dokumentiert und übergeben. Davor beim RND: Product Manager des Content-Management-Systems eines Verlagsnetzes und 16 automatisierte WhatsApp-Kanäle mit über 1 Mio. Visits. Und seit dem Regionalindex fragen mehrere Landesfunkhäuser an.</p>
-  </div>
-</header>
+  <section id="hero">
+    <p class="kicker">redaktionsschmiede.de</p>
+    <h1>Hallo, ich bin Simon Hrubesch.</h1>
+    <p class="hero-sub">Geograph, Journalist, KI-Berater. Die RedaktionsSchmiede ist meine Werkstatt: Ich sammle Medieninhalte, werte sie aus und baue die Werkzeuge dafür selbst. Was davon nützlich ist, steht hier – gratis, für alle.</p>
+    <figure class="photo portrait">
+      <img src="/img/portrait.jpg" alt="Porträt von Simon Hrubesch" onerror="this.closest('figure').hidden=true" />
+      <figcaption>Foto: Ulrike Lenz, ZDF</figcaption>
+    </figure>
+    <div class="mission">Meine Überzeugung: Inhalte werden künftig durch Metadaten beschrieben – und dadurch auswertbar, vergleichbar, besser verständlich. Im Journalismus will ich vorlegen, wie das geht.</div>
+    <div class="actions">
+      <a class="cta" href="/masker/">Secret Masker ausprobieren</a>
+      <a class="more" href="https://github.com/redaktionsschmiede/redaktionsschmiede.de">Code auf GitHub</a>
+    </div>
+  </section>
 
-<section id="haltung">
-  <p class="kicker">Haltung</p>
-  <h2>Wofür ich stehe</h2>
-  <ol class="principles">
-    <li><strong>Beschreiben statt raten.</strong> Jede Auswertung beginnt mit der Beschreibung der Daten: Herkunft, Kategorie, Region, Rechtestatus. Erst wenn das stimmt, stimmt auch, was danach kommt.</li>
-    <li><strong>Bauen und übergeben.</strong> Werkzeuge gehören denen, die sie brauchen. Ich baue gern – aber ich will Dinge nicht dauerhaft selbst betreuen.</li>
-    <li><strong>KI ist ein Werkzeug, kein Ziel.</strong> Ich baue nichts, nur weil es gerade möglich ist, sondern weil es eine konkrete Frage beantwortet oder ein konkretes Problem löst.</li>
-    <li><strong>Prototypen sind Erkenntnisinstrumente.</strong> Sie sollen zeigen, ob etwas funktioniert. Perfekt müssen sie dafür nicht sein.</li>
-  </ol>
-</section>
+  <section id="werkzeuge">
+    <p class="kicker">Werkstatt</p>
+    <h2>Werkzeuge, frei für alle</h2>
+    <p>Nichts davon ist ein Produkt. Jedes Projekt hat einen ehrlichen Stand. Den Code des Secret Masker können Sie im <a href="https://github.com/redaktionsschmiede/redaktionsschmiede.de">GitHub-Repository</a> unter der Apache-2.0-Lizenz nutzen und nachbauen. Für die übrigen Werkzeuge gibt es noch keinen öffentlichen Code.</p>
+    <div class="tools">
+      <article class="tool">
+        <h3>Secret Masker <span class="status live">läuft</span></h3>
+        <p>Markiert personenbezogene Angaben und Zugangsdaten in Texten, bevor sie an fremde KI-Dienste gehen. Die Verarbeitung passiert vollständig im Browser, der Text wird nicht gesendet. <a href="/masker/">Direkt ausprobieren</a></p>
+      </article>
+      <article class="tool">
+        <h3>Quellenkartei <span class="status">im Bau</span></h3>
+        <p>Kuratierte Liste deutscher und internationaler Medienquellen, auf RSS- und API-Basis. Pro Quelle ist dokumentiert, was mit ihr erlaubt ist – robots.txt, Nutzungsbedingungen, kommerzielle Nutzung –, bevor irgendetwas ausgewertet wird.</p>
+      </article>
+      <article class="tool">
+        <h3>Tagesbriefing <span class="status">läuft privat</span></h3>
+        <p>Newsletter und Terminquellen, jeden Morgen automatisch zu einem kurzen Briefing verdichtet. Für den eigenen Arbeitstag gebaut, im Alltag im Einsatz und noch nicht öffentlich.</p>
+      </article>
+    </div>
+    <p class="note">Weitere Skizzen liegen in der Schublade. Was davon läuft, erscheint in dieser Liste.</p>
+  </section>
 
-<section id="werdegang">
-  <p class="kicker">Werdegang</p>
-  <h2>Vom Sendeplatz zur Datenpipeline</h2>
-  <p class="soft">Sozialgeograph, seit 2015 baue ich Datenpipelines: scraping, aggregieren, Muster finden, Karten bauen – zuerst über Bevölkerungsdynamik in Leipzig und Leihfahrräder in Hamburg, heute über Medieninhalte.</p>
+  <section id="haltung">
+    <p class="kicker">Haltung</p>
+    <h2>Wofür ich stehe</h2>
+    <p>Vier Dinge, an denen ich mich orientiere – im Job wie in der Werkstatt:</p>
+    <ol class="haltung">
+      <li>
+        <strong>Beschreiben statt raten.</strong>
+        <p>Jede Auswertung beginnt mit der Beschreibung der Daten: Herkunft, Kategorie, Region, Rechtestatus. Erst wenn das stimmt, stimmt auch, was danach kommt.</p>
+      </li>
+      <li>
+        <strong>Bauen und übergeben.</strong>
+        <p>Werkzeuge gehören denen, die sie brauchen. Ich baue gern – aber ich will Dinge nicht dauerhaft selbst betreuen.</p>
+      </li>
+      <li>
+        <strong>KI ist ein Werkzeug, kein Ziel.</strong>
+        <p>Ich baue nichts, nur weil es gerade möglich ist, sondern weil es eine konkrete Frage beantwortet oder ein konkretes Problem löst.</p>
+      </li>
+      <li>
+        <strong>Prototypen sind Erkenntnisinstrumente.</strong>
+        <p>Sie sollen zeigen, ob etwas funktioniert. Perfekt müssen sie dafür nicht sein.</p>
+      </li>
+    </ol>
+  </section>
 
-  <div class="station">
-    <h4>ZDF <span class="zeit">Volontariat, Reporter</span></h4>
-    <p>Erst Sendeplätze, dann der Blick hinter die Systeme, die Redaktionen jeden Tag tragen.</p>
-  </div>
+  <section id="werdegang">
+    <p class="kicker">Werdegang</p>
+    <h2>Vom Sendeplatz zur Datenpipeline</h2>
+    <p>Ich habe Sozialgeographie studiert und mich dort dafür begeistert, soziale Prozesse sichtbar zu machen, indem man Daten miteinander verschränkt. In der Bachelorarbeit habe ich die Bevölkerungsdynamik Leipzigs seit der Wende aus Daten der Einwohnermeldeämter erklärt, in der Masterarbeit die Bewegungsmuster von Leihfahrrädern in Hamburg während der Coronazeit, aus vier Monaten gescrapten Daten. Seit 2015 heißt das: scrapen, aggregieren, Muster finden, Karten bauen.</p>
+    <ul class="timeline">
+      <li>
+        <span class="when">Januar 2019 – Juli 2023</span>
+        <strong>ZDF</strong><span class="role">Volontariat, Reporter</span>
+        <p>Erst Sendeplätze, dann der Blick hinter die Systeme, die Redaktionen jeden Tag tragen.</p>
+      </li>
+      <li>
+        <span class="when">August 2023 – August 2025</span>
+        <strong>RedaktionsNetzwerk Deutschland</strong><span class="role">Product Manager</span>
+        <p>Zwischen Redaktion, Technik und Produkt: Ich war Product Manager des Content-Management-Systems Arc XP eines Verlagsnetzes und habe Strategiewechsel umgesetzt, nicht nur besprochen. Von 16 automatisierten WhatsApp-Kanälen bis zum Ticketsystem habe ich die Werkzeug-Infrastruktur dort mit aufgebaut.</p>
+      </li>
+      <li>
+        <span class="when">September 2025 – Februar 2026</span>
+        <strong>NDR</strong><span class="role">Projektleitung Crossmediale Zusammenarbeit in der Kultur</span>
+      </li>
+      <li>
+        <span class="when">März 2026 – November 2026</span>
+        <strong>NDR Landesfunkhaus Niedersachsen</strong><span class="role">Audience Development und Datenstrategie</span>
+        <p>Die technische Infrastruktur hinter Content-Analysen aufgebaut: Datenmodelle, Pipelines, Auswertungen, Automatisierung. Das meiste davon unsichtbar unter dem, was andere zu sehen bekommen.</p>
+      </li>
+      <li>
+        <span class="when">ab Dezember 2026</span>
+        <strong>MDR</strong><span class="role">KI-Desk, Leipzig</span>
+        <p>Beraten und steuern, wie Redaktionen KI-Systeme bekommen, die funktionieren.</p>
+      </li>
+    </ul>
+    <p class="disclosure">Die RedaktionsSchmiede ist ein privates Projekt und unabhängig von meinen Arbeitgebern.</p>
+  </section>
 
-  <div class="station">
-    <h4>RedaktionsNetzwerk Deutschland <span class="zeit">Product Manager</span></h4>
-    <p>Das Content-Management-Systems eines Verlagsnetzes, 16 automatisierte WhatsApp-Kanäle mit über 1 Mio. Visits.</p>
-  </div>
+  <section id="arbeit">
+    <p class="kicker">Arbeit</p>
+    <h2>Was ich gebaut habe</h2>
+    <p>Vier Fälle aus NDR und RND, dazu Arbeitsproben aus dem ZDF und weiteren Redaktionen – mit meiner jeweiligen Rolle.</p>
+    <ul class="links">
+      <li>
+        <span class="meta">NDR</span>
+        <a class="title" href="/arbeit/#regionalindex">Der Regionalindex</a>
+        <p>Wo berichtet das Land über sich selbst? Karte und Auswertung für Niedersachsen, seit dem 12.11.2026 in Betrieb.</p>
+      </li>
+      <li>
+        <span class="meta">NDR</span>
+        <a class="title" href="/arbeit/#postomat">Der Postomat</a>
+        <p>Sechs, sieben Systemwechsel eingedampft auf einen Klick, für fünf regionale WhatsApp-Kanäle.</p>
+      </li>
+      <li>
+        <span class="meta">RND</span>
+        <a class="title" href="/arbeit/#fuenf-in-fuenf">„5 in 5“</a>
+        <p>Eine Newsletter-Architektur, die heute noch läuft – national und regional ausgerollt.</p>
+      </li>
+    </ul>
+    <div class="actions"><a class="more" href="/arbeit/">Alle Fälle, Zahlen und Arbeitsproben</a></div>
+  </section>
 
-  <div class="station">
-    <h4>NDR <span class="zeit">2023–2026 · Infrastruktur &amp; Audience Development</span></h4>
-    <p>47 Automatisierungen, 21 Datenbanken, 14.000 erfasste Content-Elemente – seit März 2026 von Null aufgebaut, KI-assistiert, dokumentiert und übergeben.</p>
-  </div>
+  <section id="blog">
+    <p class="kicker">Geschrieben</p>
+    <h2>Blog</h2>
+    <p>Methodennotizen, Einschätzungen zu KI im Journalismus und gelegentlich, was die eigenen Auswertungen zeigen – auch wenn sie nicht funktionieren. Unregelmäßig, ohne Redaktionsplan.</p>
+    <ul class="links">
+      <li>
+        <span class="meta">Erster Text · November 2026</span>
+        <a class="title" href="/blog/metadaten-ueberzeugung/">Die Metadaten-Überzeugung, ausgeführt</a>
+        <p>Warum ich glaube, dass Inhalte künftig über Kombinationen von Metadaten beschrieben und für KI berechenbar werden.</p>
+      </li>
+    </ul>
+  </section>
 
-  <div class="station">
-    <h4>MDR <span class="zeit">ab Dezember 2026 · KI-Desk, Leipzig</span></h4>
-    <p>Beraten und steuern, wie Redaktionen KI-Systeme bekommen, die funktionieren.</p>
-  </div>
-
-  <p class="soft">Der volle Steckbrief, alle Projekt-Fälle und die Arbeitsproben: <a href="/arbeit/">die Arbeit im Detail</a>.</p>
-</section>
-
-<section id="werkstatt">
-  <p class="kicker">Werkstatt</p>
-  <h2>Werkzeuge, frei für alle</h2>
-  <p class="soft">Nichts davon ist ein Produkt. Was hier steht, darf benutzt und nachgebaut werden. Jedes Projekt hat einen ehrlichen Stand:</p>
-
-  <div class="tool">
-    <h3>Quellenkartei <span class="status">im Bau</span></h3>
-    <p>Kuratierte Liste deutscher und internationaler Medienquellen, auf RSS- und API-Basis. Pro Quelle ist dokumentiert, was mit ihr erlaubt ist – robots.txt, Nutzungsbedingungen, kommerzielle Nutzung –, bevor irgendetwas ausgewertet wird.</p>
-  </div>
-
-  <div class="tool">
-    <h3>Tagesbriefing <span class="status">läuft privat · Ausbau in Planung</span></h3>
-    <p>Newsletter und Terminquellen, jeden Morgen automatisch zu einem kurzen Briefing verdichtet. Im Alltag im Einsatz.</p>
-  </div>
-
-  <div class="tool">
-    <h3>Secret Masker <span class="status">läuft</span></h3>
-    <p>Markiert personenbezogene Angaben in Texten, bevor sie an fremde KI-Dienste gehen. Texte verlassen den Browser nie. <a href="/masker/">Direkt ausprobierbar</a>.</p>
-  </div>
-
-  <p class="soft">Code-Veröffentlichungen: Einzelne Werkzeuge werden nach und nach als Open Source freigegeben.</p>
-</section>
-
-<section id="schmiedestuecke">
-  <p class="kicker">Schmiedestücke</p>
-  <h2>Was gebaut wurde</h2>
-  <p class="soft">Fälle aus zwei Häusern – tiefe Fälle statt Titelsammlung. Jede Zahl nennt ihre Herkunft; was nicht belegt werden kann, steht hier nicht.</p>
-  <ul class="samples">
-    <li><a href="/arbeit/#regionalindex">Der Regionalindex</a> <span class="quelle">– wo berichtet das Land über sich selbst? Karte und Auswertung für 38 Landkreise und 8 kreisfreie Städte.</span></li>
-    <li><a href="/arbeit/#postomat">Der Postomat</a> <span class="quelle">– sechs, sieben Systemwechsel eingedampft auf einen Klick; 400 Posts, 55.000 Follower.</span></li>
-    <li><a href="/arbeit/#fuenf-in-fuenf">„5 in 5“</a> <span class="quelle">– eine Newsletter-Architektur, die heute noch läuft – national und regional ausgerollt.</span></li>
-  </ul>
-  <p class="soft"><a href="/arbeit/">Alle Fälle, Zahlen und Belege</a>.</p>
-</section>
-
-<section id="blog">
-  <p class="kicker">Gelegentlich</p>
-  <h2>Blog</h2>
-  <p class="soft">Methodennotizen, Einschätzungen zu KI im Journalismus und gelegentlich, was die eigenen Auswertungen zeigen. Unregelmäßig, ohne Redaktionsplan.</p>
-  <ul class="samples">
-    <li><a href="/blog/">Die Metadaten-Überzeugung, ausgeführt</a> <span class="quelle">– Erster Text · November 2026</span></li>
-  </ul>
-</section>
-
-<section id="kontakt">
-  <p class="kicker">Kontakt</p>
-  <h2>Schreiben Sie mir</h2>
-  <p>Fragen, Feedback aus Ihrer Redaktion, Beobachtungen: <strong>info@redaktionsschmiede.de</strong> oder <a href="https://www.linkedin.com/in/simonhrubesch/">LinkedIn</a>. Alles wird gelesen, meist kommt zeitnah eine Antwort.</p>
-</section>
+  <section id="kontakt">
+    <p class="kicker">Kontakt</p>
+    <h2>Schreiben Sie mir</h2>
+    <p>Fragen, Feedback aus Ihrer Redaktion, Beobachtungen oder ein Werkzeug, das Sie ausprobieren wollen: Schreiben Sie mir gern an <a href="mailto:info@redaktionsschmiede.de">info@redaktionsschmiede.de</a> oder bei <a href="https://www.linkedin.com/in/simonhrubesch/">LinkedIn</a>. Alles wird gelesen, meist kommt zeitnah eine Antwort.</p>
+  </section>
 
 </main>
 
 <footer>
   <div class="inner">
-    <h3>Impressum</h3>
-    <p><strong>Diensteanbieter:</strong> Simon Hrubesch, c/o POSTFLEX PFX-986-733, Emsdettener Straße 10, 48268 Greven · E-Mail: info@redaktionsschmiede.de</p>
-    <p><strong>Verantwortlich gemäß § 18 Abs. 2 MStV:</strong> Simon Hrubesch, Anschrift wie oben.</p>
-    <h3 style="margin-top:1.5rem;">Datenschutz</h3>
-    <p>Diese Seite kommt ohne Cookies, ohne Tracking-Pixel und ohne Analyse-Dienste mit Personenbezug aus. Beim Aufruf werden technisch notwendige Verbindungsdaten verarbeitet.</p>
-    <p><strong>Hosting:</strong> Auslieferung über das Edge-Netz von Cloudflare. Beim Seitenaufruf wird Ihre IP-Adresse zur Auslieferung und zum Schutz der Seite verarbeitet; Rechtsgrundlage ist Art. 6 Abs. 1 lit. f DSGVO. Mit Cloudflare besteht ein Vertrag zur Auftragsverarbeitung. Daten können dabei auch in Drittländer, insbesondere in die USA, übermittelt werden; die Übermittlung ist durch die vom Anbieter bereitgestellten Standardvertragsklauseln und technische Maßnahmen abgesichert.</p>
-    <p><strong>Kontakt:</strong> Anfragen und Widersprüche an: info@redaktionsschmiede.de</p>
+    <div>© 2026 RedaktionsSchmiede</div>
+    <div><a href="/impressum/">Impressum</a> · <a href="/datenschutz/">Datenschutz</a></div>
   </div>
 </footer>
 
