@@ -19,3 +19,6 @@ Diese Dateien werden von den Seiten erwartet und fehlen im Repo, solange sie nic
 - `img/portrait.jpg`
 - `arbeit/img/emden.jpg`
 - `arbeit/img/regionalindex-karte.jpg`
+- `arbeit/img/postomat.jpg`
+- `arbeit/img/fuenf-in-fuenf.jpg`
+- `arbeit/img/lvz-kanal.jpg`
