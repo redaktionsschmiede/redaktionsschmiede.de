@@ -47,29 +47,36 @@
     </p>
 
     <article class="case" id="regionalindex">
-      <h2>Der Regionalindex: Wo berichtet das Land über sich selbst?</h2>
+      <h2>Der Regionalindex: Wie räumlich verteilt sind die Inhalte der Redaktion?</h2>
       <ul class="tags"><li>NDR</li><li>KI-Extraktion</li><li>Automatisierung</li><li>Karten</li></ul>
       <figure class="photo">
-        <img src="/arbeit/img/regionalindex-karte.jpg" alt="Karte Niedersachsens: Veröffentlichungen mit Ortsbezug je Landkreis, Regionalindex Niedersachsen" onerror="this.closest('figure').hidden=true" />
-        <figcaption>Regionalindex Niedersachsen: Veröffentlichungen mit Ortsbezug je Landkreis, 7-Tage-Ansicht (Stand: November 2026) · Karte: NDR</figcaption>
+        <img src="/arbeit/img/regionalindex-karte.jpg" alt="Karte Niedersachsens: Veröffentlichungen mit Ortsbezug je Landkreis, Regionalindex Niedersachsen, Darstellung mit Beispieldaten" onerror="this.closest('figure').hidden=true" />
+        <figcaption>Regionalindex Niedersachsen: Veröffentlichungen mit Ortsbezug je Landkreis, 7-Tage-Ansicht · Darstellung mit Beispieldaten</figcaption>
       </figure>
       <dl class="facts">
         <dt>Problem</dt>
-        <dd>Eine Landesfunkhaus-Redaktion weiß nicht systematisch, über welche Orte sie berichtet. Regionalität blieb Bauchgefühl.</dd>
+        <dd>Eine Landesfunkhaus-Redaktion weiß nicht systematisch, über welche Orte sie berichtet. Das strategische Ziel Regionalität konnte nicht datenbasiert erfasst werden.</dd>
         <dt>Gebaut</dt>
         <dd>Eine Pipeline, die veröffentlichte Artikel automatisch auswertet: KI-Extraktion von Ortsbezügen, Abgleich mit einer Referenz-Gemeindedatenbank, Zählung je Landkreis, Visualisierung als interaktive Karte, nächtliche Aktualisierung bei Änderungen.</dd>
         <dt>Rollen</dt>
-        <dd>Idee und Anforderungsmanagement: <strong>Patrick Weinhold</strong>, Programmmanager NDR Landesfunkhaus Niedersachsen. Konzept, Datenmodell, Extraktionslogik, Automatisierung: ich.</dd>
+        <dd>Anforderungsmanagement: <strong>Patrick Weinhold</strong>, Programmmanager und stv. Chefredakteur NDR Landesfunkhaus Niedersachsen. Konzept, Datenbanken, Extraktionslogik, Prompts, Automatisierung, Visualisierung: ich.</dd>
         <dt>Ergebnis</dt>
-        <dd>Offizieller Start am 12.11.2026. Die Auswertung läuft seit Anfang Oktober und findet seither täglich rund 100 neue Ortsbezüge im Artikelbestand, jeden mit vollständiger Metadaten-Spur (Fundstelle im Artikel, Ortstyp, Begründung der Zuordnung). Aggregiert ergibt das eine Karte aller Landkreise und kreisfreien Städte Niedersachsens im 7- und 28-Tage-Fenster. Nach dem Start teilte die NDR-Kommunikation den Index hausweit; beim NDR liegen Anfragen weiterer Landesfunkhäuser und Hauptredaktionen vor.</dd>
+        <dd>Offizieller Start am 12.11.2026. Die Auswertung läuft seit Anfang Oktober und findet seither täglich dreistellig neue Ortsbezüge im Artikelbestand, jeden mit umfangreicher Metadaten-Spur (Fundstelle im Artikel, Ortstyp, Begründung der Zuordnung, etc.). Aggregiert ergibt das eine Karte aller Landkreise und kreisfreien Städte Niedersachsens im 7- und 28-Tage-Fenster. Nach dem Start teilte die NDR-Kommunikation den Index hausweit.</dd>
         <dt>Stand</dt>
-        <dd>In Betrieb beim NDR; ob der Index auf weitere Bereiche ausgerollt wird, prüft der NDR. Ich bin nicht mehr beteiligt, die Übergabe ist dokumentiert.</dd>
+        <dd>In Betrieb beim NDR Niedersachsen. Skalierbarkeit auf weitere Bereiche möglich und in der Daten-und Technikarchitektur mitbedacht.</dd>
+      <dt>Belege</dt>
+      <dd>Patrick Weinholds <a href="https://lnkd.in/p/ePDX_Ejj">LinkedIn-Post zum Start</a> (12.11.2026), <i>„Entwickelt hat ihn unser Audience Developer und Datenstratege Simon Hrubesch“.</i></dd>
+      -->
       </dl>
     </article>
 
     <article class="case" id="postomat">
       <h2>Der Postomat: Von sechs, sieben Systemen zu einem Werkzeug</h2>
       <ul class="tags"><li>NDR</li><li>WhatsApp</li><li>Prozess</li><li>Messung</li></ul>
+      <figure class="photo">
+        <img src="/arbeit/img/postomat.jpg" alt="Screenshot des Postomat-Formulars: drei eingegebene Artikel, daneben die Vorschau des fertigen Kanal-Beitrags" onerror="this.closest('figure').hidden=true" />
+        <figcaption>Der Postomat: ein bis drei Links rein, fertiger Kanal-Beitrag samt Tracking raus.</figcaption>
+      </figure>
       <dl class="facts">
         <dt>Problem</dt>
         <dd>Ein Posting durchlief sechs, sieben Systeme – CMS, Website, Word, Excel, Linkshortener, Planung. Am Ende stand ein Post, den keines der Systeme fehlerfrei nachvollziehen konnte.</dd>
@@ -85,6 +92,10 @@
     <article class="case" id="fuenf-in-fuenf">
       <h2>RND: „5 in 5“ – eine Newsletter-Architektur, die heute noch läuft</h2>
       <ul class="tags"><li>RND</li><li>Architektur</li><li>CMS</li><li>Systemverschränkung</li></ul>
+      <figure class="photo">
+        <img src="/arbeit/img/fuenf-in-fuenf.jpg" alt="Übersicht mehrerer 5-in-5-Newsletter-Ausgaben, unter anderem Hannover, Leipzig und Nordsachsen" onerror="this.closest('figure').hidden=true" />
+        <figcaption>„5 in 5“ im Verlagsnetz: nationale und regionale Ausgaben auf derselben Architektur.</figcaption>
+      </figure>
       <dl class="facts">
         <dt>Problem</dt>
         <dd>Ein neues Newsletter-Format („5 in 5“) erforderte eine komplett neue Architektur im Content-Management-System und eine neue Anbindung zwischen CMS und Planungssystem.</dd>
@@ -102,6 +113,10 @@
     <article class="case" id="whatsapp">
       <h2>RND: 16 WhatsApp-Kanäle mit eigener Infrastruktur</h2>
       <ul class="tags"><li>RND</li><li>WhatsApp</li><li>APIs</li><li>Tracking</li></ul>
+      <figure class="photo">
+        <img src="/arbeit/img/lvz-kanal.jpg" alt="WhatsApp-Kanal-Beitrag der Leipziger Volkszeitung mit Begrüßungstext, Foto und Kurzlink" onerror="this.closest('figure').hidden=true" />
+        <figcaption>Beitrag des LVZ-WhatsApp-Kanals: redaktioneller Text der LVZ, veröffentlicht über die von mir gebaute Kanal-Infrastruktur. Der Kurzlink (lvz.t1p.de) läuft über den Linkshortener t1p, den ich für das gesamte Verlagsnetz eingeführt habe — bis heute im Einsatz.</figcaption>
+      </figure>
       <dl class="facts">
         <dt>Problem</dt>
         <dd>Ein Verlagsnetz will Messenger-Reichweite aufbauen – aber ohne Workflows und ohne Messung bleiben Kanäle Bauchgefühl.</dd>
@@ -122,9 +137,9 @@
     <p class="kicker">In Kurzform</p>
     <h2>Weitere Arbeiten</h2>
     <ul class="short">
-      <li><b>NDR · Zeitextraktor:</b> ein Tool, das Planungsdaten automatisch um Zeitangaben ergänzt. Von der Idee zweier Kolleg:innen aus der redaktionellen Planung bis zum einsatzfähigen Prototyp in drei Tagen, danach in laufender Nutzung durch die Planung.</li>
+      <li><b>NDR · Zeitextraktor:</b> ein Tool, das Planungsdaten automatisch um Zeitangaben ergänzt. Von der Idee zweier Kolleg:innen aus der redaktionellen Planung bis zum einsatzfähigen Tool in drei Tagen.</li>
       <li><b>RND · Ticketsystem</b> aus Basis-Werkzeugen (MS Forms, Lists, Power Automate) für Neu- und Änderungsanträge von CMS-Accounts, mit Sicherheits- und Berechtigungskonzept: über 360 bearbeitete Tickets seit Mai 2024.</li>
-      <li><b>RND · Linkshortener</b> als Dienst für das ganze Verlagsnetz: Marktscreening, Einführung, Schulung und Weiterentwicklung; rund 10.000 gekürzte Links innerhalb von sechs Monaten nach Launch.</li>
+      <li><b>RND · Linkshortener</b> als Dienst für das ganze Verlagsnetz: Marktscreening, Einführung, Schulung und Weiterentwicklung; rund 10.000 gekürzte Links innerhalb von sechs Monaten nach Launch — und bis heute im Einsatz im gesamten Verlagsnetz.</li>
       <li><b>RND · Product Manager und Administrator von Arc XP:</b> Hauptverantwortung für System und Weiterentwicklung, inklusive Pflege der Nutzer- und Berechtigungsstruktur.</li>
       <li><b>RND · Workflows:</b> teilautomatisierte Podcast-Seitenpflege (stündliches Portfolio-Scraping mit automatischen To-dos), KI-Zusammenfassungen des Newsletter-Feedbacks per E-Mail mit Redaktions-Cockpit, automatischer Agenturvideo-Upload über Middleware samt Slackbot, automatisierte Audiotranskription mit E-Mail-Versand.</li>
       <li><b>RND · Schulungen</b> für rund 100 Mitarbeitende (saechsische.de, haz.de) in den Redaktionssystemen Arc und Kordiam.</li>
@@ -166,7 +181,8 @@
         <p>Wenn der Kurs selbst zur Nachricht wird: zur Schwäche des Rubels und der russischen Wirtschaft.</p>
       </li>
     </ul>
-    <p>Insgesamt rund hundert Filme und Beiträge für das ZDF (eigene Zählung), dazu die Arbeit in zwei Verlagsnetzen.
+    <p>Insgesamt rund hundert Filme und Beiträge für das ZDF (eigene Zählung), dazu die Arbeit in zwei Verlagsnetzen.</p>
+  </section>
 
 </main>
 
@@ -177,5 +193,6 @@
   </div>
 </footer>
 
+<script type="module" src="https://static.cloudflareinsights.com/beacon.min.js/vce701823e78c4301a35b7e07294d87301792088814092" integrity="sha512-UKNk8GbxkABxKcXYuLkO16EleLGUkcvJWtpSNmExE0Too3ZaFAxTscNWEc1OdAv5/BikHawapSCaiD2XCmp+Bw==" nonce="ZcL7TXW+nVtay09TpaRspg==" data-cf-beacon='{"version":"2024.11.0","token":"36b4216ae2dc4d5488c249161e71fe1e","spa":2}' crossorigin="anonymous"></script>
 </body>
 </html>
