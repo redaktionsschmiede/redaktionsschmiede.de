@@ -52,6 +52,7 @@ em { font-style: italic; }
 
 figure.photo { margin-top: 1.8rem; max-width: 62ch; }
 figure.photo img { display: block; max-width: 100%; height: auto; border-radius: 6px; border: 1px solid var(--line); }
+figure.photo.hochkant img { max-height: 28rem; width: auto; margin-inline: auto; }
 figure.portrait img { max-width: 320px; }
 figcaption { font-size: 0.8rem; color: var(--ink-soft); margin-top: 0.5rem; }
 
