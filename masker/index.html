@@ -47,7 +47,7 @@
   h2 { font-family:var(--serif); font-size:1.5rem; margin-bottom:1rem; }
   p { color:var(--ink-soft); max-width:62ch; margin-top:1rem; }
   p b, p strong { color:var(--ink); font-weight:600; }
-  #hero { padding-top:4.5rem; }
+  #tool { padding-top:2.2rem; }
 
   .btn { background:var(--ember); color:var(--ember-ink); border:none; font-weight:600; padding:.6rem 1.2rem; border-radius:4px; font-size:.97rem; cursor:pointer; font-family:var(--sans); }
   .btn:hover { background:var(--ember-hover); }
@@ -57,7 +57,7 @@
   .actions .btn.big { padding:10px 18px; font-size:14px; }
 
   .lbl { text-transform:uppercase; letter-spacing:.12em; font-size:.72rem; color:var(--ember); font-weight:600; margin:1.6rem 0 .6rem; display:flex; justify-content:space-between; align-items:center; gap:8px; flex-wrap:wrap; }
-  textarea { width:100%; min-height:140px; padding:12px; background:var(--paper-2); border:1px solid var(--line); border-radius:6px; color:var(--ink); font-family:ui-monospace,monospace; font-size:12px; line-height:1.6; resize:vertical; }
+  textarea { width:100%; min-height:140px; max-height:60vh; overflow-y:auto; padding:12px; background:var(--paper-2); border:1px solid var(--line); border-radius:6px; color:var(--ink); font-family:ui-monospace,monospace; font-size:12px; line-height:1.6; resize:vertical; }
   textarea:focus { outline:2px solid var(--ember); }
   #doc { width:100%; padding:14px; background:var(--paper-2); border:1px solid var(--line); border-radius:6px; color:var(--ink); font-family:ui-monospace,monospace; font-size:12px; line-height:2; white-space:pre-wrap; word-break:break-word; min-height:100px; }
   .mark { padding:1px 3px; border-radius:3px; font-weight:600; }
@@ -106,18 +106,13 @@
 
 <main id="main">
 
-  <section id="hero">
+  <section id="tool">
     <p class="kicker">Werkstatt</p>
     <h1>Secret Masker</h1>
-    <p>KI-Dienste wie ChatGPT und Claude helfen im Redaktionsalltag: ordnen, zusammenfassen, umformulieren. Wer aber Texte in ein fremdes System einfügt, gibt Daten aus der Hand – personenbezogene Angaben, Zugangsdaten, interne Adressen, Pfade und Rechnernamen wandern mit.</p>
-    <p>Der Secret Masker markiert solche Stellen, bevor der Text den Browser verlässt, und ersetzt sie durch Platzhalter wie [E-MAIL] oder [API_KEY]. Kontext und Struktur bleiben erhalten, die heiklen Werte nicht. So lässt sich der Nutzen von Sprachmodellen ausschöpfen, ohne die Datensicherheit zu beschädigen.</p>
-    <p><strong>So funktioniert es:</strong> Gesamten Text einfügen, Vorschau prüfen, einzelne Funde mit ✕ ablehnen oder mit ✓ wieder maskieren, Endergebnis kopieren. Standard: alles maskiert.</p>
-  </section>
-
-  <section id="tool">
+    <p>Wer Texte an ChatGPT und andere KI-Dienste übergibt, gibt schnell mehr mit als beabsichtigt: Zugangsdaten, interne Adressen, personenbezogene Angaben. Der Secret Masker markiert solche Stellen und ersetzt sie durch Platzhalter, bevor der Text den Browser verlässt – die Verarbeitung passiert vollständig lokal.</p>
     <div class="cats" id="cats"></div>
 
-    <div class="lbl">1 · Eingabe (gesamten Text hier einfügen)</div>
+    <div class="lbl">1 · Eingabe</div>
     <textarea id="input" spellcheck="false" placeholder="Text hier einfügen…"></textarea>
 
     <div class="lbl">
@@ -127,7 +122,7 @@
       </span>
     </div>
     <div id="doc"></div>
-    <p class="legend">Farbig unterlegt = wird maskiert · Grau unterlegt = abgelehnt (bleibt im Klartext) · Buttons direkt an der Stelle: ✕ ablehnen, ✓ wieder maskieren</p>
+    <p class="legend">Farbig unterlegt = wird maskiert · Grau unterlegt = abgelehnt (bleibt im Klartext) · Buttons direkt an der Stelle: ✕ ablehnen, ✓ wieder maskieren · Standard: alles maskiert</p>
 
     <div class="actions">
       <button class="btn big" id="copyBtn">Endergebnis kopieren</button>
@@ -202,7 +197,7 @@
           patterns: [/(?:\+\d{1,3}[ .-]?)?(?:0\d{2,4}[ .-]?)?\d{3,}(?:[ .-]?\d{2,4}){1,2}\b/g] },
       ];
 
-      const DEMO = 'Server-Konfiguration:\napi_key = "sk-live-AbC123XyZ456QrStUvWx890"\nDB_PASSWORD: StrengGeheim!2024\nBearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiIxMjMifQ.tX7k\n\nSession-ID: 2e46f56867e34af09dc49febbea35dd5\nTrace-ID: a3f9c2e1-8b4d-4f7a-9c6e-2d8b1a5e7f90\nHash: 7c4a8d09ca3762af61e59520943dc264\n\nAdmin: max.mueller@firma.de\nsudo - deploy\nHome: /home/mueller/projekte/config.yml\nLogs unter C:\\Users\\mueller\\AppData\\db.log\nDB-Host (lokal): 10.42.17.233\nÖffentlich: 203.0.113.45\nWeb: https://intranet.firma.de/admin und www.kunde-example.com\nIBAN: DE89 3704 0044 0532 0130 00\nTel.: +49 89 12345678';
+      const DEMO = 'Beispieltext:\n\nVon: Annika Schröder <annika.schroeder@redaktion-beispiel.de>\nAn: Simon <simon@redaktionsschmiede.de>\nBetreff: Für die KI-Zusammenfassung: Regionalkorrespondent\n\nHallo Simon,\n\nwie besprochen der Text für das KI-Briefing. Unser Regionalkorrespondent ist Jörn Petersen, erreichbar unter j.petersen@redaktion-beispiel.de oder mobil unter 0171 2345678, Büro-Nummer +49 511 9876543.\n\nSein aktueller Beitrag: Reportage aus dem Wendland, Beitrags-ID 9f8e7d6c5b4a392817263544. Der finale Schnitt liegt unter /srv/medien/2026/wendland/schnitt_final.mp4, die Planung dazu im Intranet: https://intranet.redaktion-beispiel.de/planung (nur aus dem Redaktionsnetz erreichbar, Proxy 10.20.14.37).\n\nFür die Anbindung des CMS: Benutzer: m.krause, Passwort: SonnenBlume2024, außerdem der Token fürs Doku-Repo: ghp_AbC123XyZ456QrStUvWx89012.\n\nTermin mit der Sendung: Termin-ID a3f9c2e1-8b4d-4f7a-9c6e-2d8b1a5e7f90, Raum 3.14.\n\nUnd bitte die Spesen für unseren freien Kameramann Thomas Vogel klären, Bankverbindung: DE89 3704 0044 0532 0130 00.\n\nDanke und Gruß\nAnnika';
 
       const enabled = {}; CATEGORIES.forEach(c => enabled[c.id] = true);
       // Entscheidung pro Treffer: true = maskiert (Standard), false = abgelehnt. Nur im RAM!
@@ -217,6 +212,12 @@
       const applyBtn = document.getElementById("applyBtn");
 
       function esc(s) { return s.replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;").replace(/"/g,"&quot;"); }
+
+      // Eingabefeld passt sich der Textlaenge an, bis 60 Prozent der Fensterhoehe
+      function fitTextarea() {
+        inputEl.style.height = "auto";
+        inputEl.style.height = Math.max(140, Math.min(inputEl.scrollHeight, Math.round(window.innerHeight * 0.6))) + "px";
+      }
 
       function computeMatches(text) {
         const matches = [];
@@ -338,7 +339,9 @@
       });
 
       inputEl.value = DEMO;
-      inputEl.addEventListener("input", () => { decisions.clear(); render(); });
+      fitTextarea();
+      window.addEventListener("resize", fitTextarea);
+      inputEl.addEventListener("input", () => { decisions.clear(); fitTextarea(); render(); });
       copyBtn.addEventListener("click", async () => {
         const t = buildFinal(inputEl.value, currentMatches());
         try { await navigator.clipboard.writeText(t); copyBtn.textContent = "✓ Kopiert!"; }
@@ -348,10 +351,11 @@
       applyBtn.addEventListener("click", () => {
         inputEl.value = buildFinal(inputEl.value, currentMatches());
         decisions.clear();
+        fitTextarea();
         render();
       });
       render();
     </script>
-  <script type="module" src="https://static.cloudflareinsights.com/beacon.min.js/vce701823e78c4301a35b7e07294d87301792088814092" integrity="sha512-UKNk8GbxkABxKcXYuLkO16EleLGUkcvJWtpSNmExE0Too3ZaFAxTscNWEc1OdAv5/BikHawapSCaiD2XCmp+Bw==" nonce="UFi0tSkvzBg7K9KcNrhlVg==" data-cf-beacon='{"version":"2024.11.0","token":"36b4216ae2dc4d5488c249161e71fe1e","spa":2}' crossorigin="anonymous"></script>
+  <script type="module" src="https://static.cloudflareinsights.com/beacon.min.js/vce701823e78c4301a35b7e07294d87301792088814092" integrity="sha512-UKNk8GbxkABxKcXYuLkO16EleLGUkcvJWtpSNmExE0Too3ZaFAxTscNWEc1OdAv5/BikHawapSCaiD2XCmp+Bw==" nonce="dgk6v+iE0IoYWq3bZ+Cjwg==" data-cf-beacon='{"version":"2024.11.0","token":"36b4216ae2dc4d5488c249161e71fe1e","spa":2}' crossorigin="anonymous"></script>
 </body>
 </html>
