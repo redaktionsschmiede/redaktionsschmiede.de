@@ -129,7 +129,7 @@
       <button class="btn big ghost" id="applyBtn">Maskierung in Eingabe übernehmen</button>
     </div>
 
-    <details>
+    <details open>
       <summary style="cursor:pointer;font-weight:500">Endergebnis (roh)</summary>
       <pre id="raw"></pre>
     </details>
@@ -156,11 +156,11 @@
       // kein sessionStorage, kein IndexedDB, keine fetch/XHR-Aufrufe nach dem Laden.
       // Alle Entscheidungen (decisions) liegen nur im Arbeitsspeicher der Seite.
       const CATEGORIES = [
-        { id: "apikey", label: "API-Keys & Tokens", color: "#fee2e2/#991b1b", placeholder: "[API_KEY]",
+        { id: "apikey", label: "API-Keys & Tokens", color: "rgba(153,27,27,.22)/#cf9494", placeholder: "[API_KEY]",
           patterns: [/(?:sk|pk|rk|api)[-_]?(?:live|test|prod)?[A-Za-z0-9]{16,}/g, /(?:ghp|gho|ghu|ghs|ghr)_[A-Za-z0-9]{20,}/g, /(?:AKIA|ASIA)[0-9A-Z]{16}/g, /xox[bpoa]-[A-Za-z0-9-]{10,}/g, /AIza[0-9A-Za-z\-_]{20,}/g, /(?:eyJ)[A-Za-z0-9\-_]+\.[A-Za-z0-9\-_]+(?:\.[A-Za-z0-9\-_]+)?/g] },
-        { id: "password", label: "Passwörter & Credentials", color: "#ffedd5/#9a3412", placeholder: "[PASSWORT]",
+        { id: "password", label: "Passwörter & Credentials", color: "rgba(154,52,18,.22)/#cda889", placeholder: "[PASSWORT]",
           patterns: [/(?:password|passwd|pwd|pass|passwort|kennwort|secret|token|credential|auth[_-]?key|api[_-]?key|apikey|client[_-]?secret|access[_-]?key|private[_-]?key|zugang)\s*[=:]\s*["']?[^\s"',;]{3,}/gi, /(?:Bearer)\s+[A-Za-z0-9\-._~+/]+=*/gi, /-----BEGIN [A-Z ]*PRIVATE KEY-----[\s\S]*?-----END [A-Z ]*PRIVATE KEY-----/g] },
-        { id: "hexid", label: "IDs & Hex-Strings (aggressiv)", color: "#fae8ff/#86198f", placeholder: "[ID]",
+        { id: "hexid", label: "IDs & Hex-Strings (aggressiv)", color: "rgba(134,25,143,.20)/#b39ac6", placeholder: "[ID]",
           patterns: [
             // UUID mit Bindestrichen
             /\b[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}\b/gi,
@@ -175,13 +175,13 @@
             if (digits >= 3) return true; // genug Ziffern => kein normales Wort
             return false;
           } },
-        { id: "email", label: "E-Mail-Adressen", color: "#dbeafe/#1e40af", placeholder: "[E-MAIL]",
+        { id: "email", label: "E-Mail-Adressen", color: "rgba(30,64,175,.22)/#97a7cd", placeholder: "[E-MAIL]",
           patterns: [/[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}/g] },
-        { id: "username", label: "Usernamen", color: "#f3e8ff/#6b21a8", placeholder: "[USERNAME]",
+        { id: "username", label: "Usernamen", color: "rgba(107,33,168,.20)/#a895cb", placeholder: "[USERNAME]",
           patterns: [/(?:user|username|benutzer|usr|login)\s*[=:]\s*["']?[\w.\-]{2,}/gi, /(?:sudo|su)\s+-\s*[a-z_][\w\-]*/gi] },
-        { id: "filepath", label: "Dateipfade", color: "#d1fae5/#065f46", placeholder: "[PFAD]",
+        { id: "filepath", label: "Dateipfade", color: "rgba(6,95,70,.22)/#96c9ac", placeholder: "[PFAD]",
           patterns: [/\/(?:home|Users|root|var|etc|opt|srv|mnt|data)\/[\w.\-]+(?:\/[\w.\-]+)*/g, /[A-Za-z]:\\(?:Users|Windows|Program[ ]?Files)[^\s"'<>|,;]*/g, /(?:~\/|\.\.\/|\.\/)[\w.\-/]+/g] },
-        { id: "ip", label: "IP-Adressen (alle, auch interne)", color: "#ccfbf1/#115e59", placeholder: "[IP]",
+        { id: "ip", label: "IP-Adressen (alle, auch interne)", color: "rgba(17,94,89,.22)/#9cc3be", placeholder: "[IP]",
           patterns: [
             // Alle IPv4-Adressen: Oktetten mit 1-3 Ziffern, auch mit führenden Nullen.
             // Bewusst ohne Bereichs-/Privat-Filter: Auch interne Adressen (10.x,
@@ -189,11 +189,11 @@
             // an fremde KI-Dienste gehen. Einzelne Treffer sind per ✓ ablehnbar.
             /\b(?:\d{1,3}\.){3}\d{1,3}\b/g
           ] },
-        { id: "url", label: "Webadressen (URLs)", color: "#e0e7ff/#3730a3", placeholder: "[URL]",
+        { id: "url", label: "Webadressen (URLs)", color: "rgba(55,48,163,.20)/#a0a5d3", placeholder: "[URL]",
           patterns: [/\bhttps?:\/\/[^\s"'<>()]+/gi, /\bwww\.[a-zA-Z0-9\-]+(?:\.[a-zA-Z0-9\-]+)+(?:\/[^\s"'<>()]*)?/g, /\b[a-zA-Z0-9\-]+\.(?:de|com|net|org|io|dev|eu|fr|it|ch|at|info|cloud)(?:\/[^\s"'<>()]*)?\b/g] },
-        { id: "iban", label: "IBAN & Kontonummern", color: "#fef3c7/#92400e", placeholder: "[IBAN]",
+        { id: "iban", label: "IBAN & Kontonummern", color: "rgba(146,64,14,.22)/#cdb48e", placeholder: "[IBAN]",
           patterns: [/\b[A-Z]{2}\d{2}(?:[ ]?[A-Z0-9]{4}){2,7}(?:[ ]?[A-Z0-9]{1,2})?\b/g] },
-        { id: "phone", label: "Telefonnummern", color: "#fce7f3/#9d174d", placeholder: "[TELEFON]",
+        { id: "phone", label: "Telefonnummern", color: "rgba(157,23,77,.20)/#cb98ae", placeholder: "[TELEFON]",
           patterns: [/(?:\+\d{1,3}[ .-]?)?(?:0\d{2,4}[ .-]?)?\d{3,}(?:[ .-]?\d{2,4}){1,2}\b/g] },
       ];
 
@@ -356,6 +356,6 @@
       });
       render();
     </script>
-  <script type="module" src="https://static.cloudflareinsights.com/beacon.min.js/vce701823e78c4301a35b7e07294d87301792088814092" integrity="sha512-UKNk8GbxkABxKcXYuLkO16EleLGUkcvJWtpSNmExE0Too3ZaFAxTscNWEc1OdAv5/BikHawapSCaiD2XCmp+Bw==" nonce="dgk6v+iE0IoYWq3bZ+Cjwg==" data-cf-beacon='{"version":"2024.11.0","token":"36b4216ae2dc4d5488c249161e71fe1e","spa":2}' crossorigin="anonymous"></script>
+  <script type="module" src="https://static.cloudflareinsights.com/beacon.min.js/vce701823e78c4301a35b7e07294d87301792088814092" integrity="sha512-UKNk8GbxkABxKcXYuLkO16EleLGUkcvJWtpSNmExE0Too3ZaFAxTscNWEc1OdAv5/BikHawapSCaiD2XCmp+Bw==" nonce="gDvElBZtFY31u8heQPVvRQ==" data-cf-beacon='{"version":"2024.11.0","token":"36b4216ae2dc4d5488c249161e71fe1e","spa":2}' crossorigin="anonymous"></script>
 </body>
 </html>
