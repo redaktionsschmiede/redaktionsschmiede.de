@@ -59,6 +59,8 @@
   .lbl { text-transform:uppercase; letter-spacing:.12em; font-size:.72rem; color:var(--ember); font-weight:600; margin:1.6rem 0 .6rem; display:flex; justify-content:space-between; align-items:center; gap:8px; flex-wrap:wrap; }
   textarea { width:100%; min-height:140px; max-height:60vh; overflow-y:auto; padding:12px; background:var(--paper-2); border:1px solid var(--line); border-radius:6px; color:var(--ink); font-family:ui-monospace,monospace; font-size:12px; line-height:1.6; resize:vertical; }
   textarea:focus { outline:2px solid var(--ember); }
+  input.terms { width:100%; padding:10px 12px; background:var(--paper-2); border:1px solid var(--line); border-radius:6px; color:var(--ink); font-size:.95rem; }
+  input.terms::placeholder { color:var(--ink-soft); }
   #doc { width:100%; padding:14px; background:var(--paper-2); border:1px solid var(--line); border-radius:6px; color:var(--ink); font-family:ui-monospace,monospace; font-size:12px; line-height:2; white-space:pre-wrap; word-break:break-word; min-height:100px; }
   .mark { padding:1px 3px; border-radius:3px; font-weight:600; }
   /* Angenommen: farbige Unterlegung je Kategorie (inline gesetzt) */
@@ -112,6 +114,9 @@
     <p>Wer Texte an ChatGPT und andere KI-Dienste übergibt, gibt schnell mehr mit als beabsichtigt: Zugangsdaten, interne Adressen, personenbezogene Angaben. Der Secret Masker markiert solche Stellen und ersetzt sie durch Platzhalter, bevor der Text den Browser verlässt – die Verarbeitung passiert vollständig lokal.</p>
     <div class="cats" id="cats"></div>
 
+    <div class="lbl">Optional: Eigene Begriffe (mit Komma trennen) – werden zusätzlich maskiert</div>
+    <input class="terms" id="terms" type="text" spellcheck="false" placeholder="z. B. Jörn Petersen, Thomas Vogel, Projekt Rheinblick" />
+
     <div class="lbl">1 · Eingabe</div>
     <textarea id="input" spellcheck="false" placeholder="Text hier einfügen…"></textarea>
 
@@ -139,7 +144,7 @@
     </div>
 
     <div class="limits">
-      <p><strong>Grenzen:</strong> Erkannt werden API-Keys und Tokens, Passwörter und Credentials, IDs und Hex-Strings, E-Mail-Adressen, Usernamen, Dateipfade, IP-Adressen (alle IPv4, auch interne), Webadressen, IBANs und Telefonnummern. Namen von Personen, Orte und andere Angaben im Fließtext werden nicht erkannt. Eine automatische Erkennung ist nie vollständig: Prüfen Sie das Ergebnis, bevor Sie Text an einen fremden KI-Dienst senden. Das Werkzeug wird ohne Gewähr bereitgestellt.</p>
+      <p><strong>Grenzen:</strong> Erkannt werden API-Keys und Tokens, Passwörter und Credentials, IDs und Hex-Strings, E-Mail-Adressen, Usernamen, Dateipfade, IP-Adressen (alle IPv4, auch interne), Webadressen, IBANs und Telefonnummern. Namen von Personen werden nicht zuverlässig erkannt: Die experimentelle Namen-Erkennung oben (standardmäßig ausgeschaltet) findet viele, aber längst nicht alle und markiert gelegentlich zu viel. Wer die Namen kennt, trägt sie sicherer unter Eigene Begriffe ein. Orte und andere Angaben im Fließtext bleiben unmarkiert. Eine automatische Erkennung ist nie vollständig: Prüfen Sie das Ergebnis, bevor Sie Text an einen fremden KI-Dienst senden. Das Werkzeug wird ohne Gewähr bereitgestellt.</p>
     </div>
   </section>
 
@@ -195,11 +200,25 @@
           patterns: [/\b[A-Z]{2}\d{2}(?:[ ]?[A-Z0-9]{4}){2,7}(?:[ ]?[A-Z0-9]{1,2})?\b/g] },
         { id: "phone", label: "Telefonnummern", color: "rgba(157,23,77,.20)/#cb98ae", placeholder: "[TELEFON]",
           patterns: [/(?:\+\d{1,3}[ .-]?)?(?:0\d{2,4}[ .-]?)?\d{3,}(?:[ .-]?\d{2,4}){1,2}\b/g] },
+        { id: "names", label: "Namen (Experiment)", color: "rgba(217,119,47,.20)/#cfa583", placeholder: "[NAME]",
+          // Experiment: Gro-/Kleinschreibung ist im Deutschen kein zuverlaessiges Namenssignal.
+          // Standardmaessig aus: findet viele Namen, aber nicht alle und gelegentlich zu viel.
+          patterns: [
+            // Anrede plus Name: Frau Schröder, Herrn Jörn Petersen
+            /(?:Herr|Herrn|Frau|Hr\.|Fr\.)[ \t]+[A-ZÄÖÜ][a-zäöüß]+(?:[ \t]+[A-ZÄÖÜ][a-zäöüß]+)?/g,
+            // Vorname Nachname: zwei bis drei großgeschriebene Wörter nacheinander
+            /\b[A-ZÄÖÜ][a-zäöüß-]{2,}(?:[ \t]+[A-ZÄÖÜ][a-zäöüß-]{2,})+\b/g
+          ],
+          validate: (v) => {
+            const STOP = new Set(["der","die","das","den","dem","des","ein","eine","einen","einem","einer","eines","und","oder","aber","fuer","für","mit","bei","nach","seit","von","vom","zur","zum","in","im","an","am","auf","aus","über","vor","wenn","weil","als","wie","ich","sie","er","es","wir","ihr","sein","seine","ihre","ihren","mein","meine","kein","keine","alle","viele","unser","unsere","unseren","euer","eure","dann","noch","nur","schon","auch","heute","gestern","morgen","montag","dienstag","mittwoch","donnerstag","freitag","samstag","sonntag","januar","februar","märz","april","mai","juni","juli","august","september","oktober","november","dezember","bitte","danke","gruß","liebe","lieber","hallo","guten","beste","besten","redaktion","beitrag","text","mail","termin","planung","sendung","studio","presse","neue","neuer","neues","erste","erster","letzte","letzter","sehr","hier","dort"]);
+            const words = v.toLowerCase().replace(/^(?:herr|herrn|frau|hr\.|fr\.)\s+/, "").split(/\s+/);
+            return words.length > 0 && !words.some(w => STOP.has(w));
+          } },
       ];
 
       const DEMO = 'Beispieltext:\n\nVon: Annika Schröder <annika.schroeder@redaktion-beispiel.de>\nAn: Simon <simon@redaktionsschmiede.de>\nBetreff: Für die KI-Zusammenfassung: Regionalkorrespondent\n\nHallo Simon,\n\nwie besprochen der Text für das KI-Briefing. Unser Regionalkorrespondent ist Jörn Petersen, erreichbar unter j.petersen@redaktion-beispiel.de oder mobil unter 0171 2345678, Büro-Nummer +49 511 9876543.\n\nSein aktueller Beitrag: Reportage aus dem Wendland, Beitrags-ID 9f8e7d6c5b4a392817263544. Der finale Schnitt liegt unter /srv/medien/2026/wendland/schnitt_final.mp4, die Planung dazu im Intranet: https://intranet.redaktion-beispiel.de/planung (nur aus dem Redaktionsnetz erreichbar, Proxy 10.20.14.37).\n\nFür die Anbindung des CMS: Benutzer: m.krause, Passwort: SonnenBlume2024, außerdem der Token fürs Doku-Repo: ghp_AbC123XyZ456QrStUvWx89012.\n\nTermin mit der Sendung: Termin-ID a3f9c2e1-8b4d-4f7a-9c6e-2d8b1a5e7f90, Raum 3.14.\n\nUnd bitte die Spesen für unseren freien Kameramann Thomas Vogel klären, Bankverbindung: DE89 3704 0044 0532 0130 00.\n\nDanke und Gruß\nAnnika';
 
-      const enabled = {}; CATEGORIES.forEach(c => enabled[c.id] = true);
+      const enabled = {}; CATEGORIES.forEach(c => enabled[c.id] = c.id !== "names");
       // Entscheidung pro Treffer: true = maskiert (Standard), false = abgelehnt. Nur im RAM!
       const decisions = new Map();
       const inputEl = document.getElementById("input");
@@ -210,6 +229,7 @@
       const acceptAllBtn = document.getElementById("acceptAll");
       const copyBtn = document.getElementById("copyBtn");
       const applyBtn = document.getElementById("applyBtn");
+      const termsEl = document.getElementById("terms");
 
       function esc(s) { return s.replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;").replace(/"/g,"&quot;"); }
 
@@ -229,7 +249,25 @@
               matches.push({ start: m.index, end: m.index + m[0].length, cat: cat.id, orig: m[0] });
           }
         }
+        // Eigene Begriffe: einfache Textsuche, Gross-/Kleinschreibung ignoriert,
+        // eindeutiger Platzhalter je Begriff, nur fuer diese Sitzung gespeichert.
+        const ownList = termsEl.value.split(",").map(t => t.trim()).filter(t => t.length >= 2);
+        const ownIds = new Map();
+        ownList.forEach(t => {
+          const k = t.toLowerCase();
+          if (!ownIds.has(k)) ownIds.set(k, "[BEGRIFF_" + (ownIds.size + 1) + "]");
+        });
+        const hay = text.toLowerCase();
+        ownList.forEach(t => {
+          const k = t.toLowerCase();
+          let idx = 0;
+          while ((idx = hay.indexOf(k, idx)) !== -1) {
+            matches.push({ start: idx, end: idx + t.length, cat: "ownterm", orig: text.slice(idx, idx + t.length), placeholder: ownIds.get(k) });
+            idx += t.length;
+          }
+        });
         const filtered = matches.filter(m => {
+          if (m.cat === "ownterm") return true;
           const cat = CATEGORIES.find(c => c.id === m.cat);
           return !cat.validate || cat.validate(m.orig);
         });
@@ -249,6 +287,7 @@
       }
 
       function catStyle(catId) {
+        if (catId === "ownterm") return "background:rgba(202,138,4,.18);color:#c9b57c";
         const [bg, fg] = CATEGORIES.find(c => c.id === catId).color.split("/");
         return "background:" + bg + ";color:" + fg;
       }
@@ -307,7 +346,7 @@
         let out = "", pos = 0;
         for (const m of chosen) {
           if (m.start > pos) out += text.slice(pos, m.start);
-          out += isAccepted(m) ? CATEGORIES.find(c => c.id === m.cat).placeholder : m.orig;
+          out += isAccepted(m) ? (m.placeholder || CATEGORIES.find(c => c.id === m.cat).placeholder) : m.orig;
           pos = m.end;
         }
         out += text.slice(pos);
@@ -330,7 +369,7 @@
         const lb = document.createElement("label");
         lb.className = "cat"; lb.dataset.id = cat.id;
         const cb = document.createElement("input");
-        cb.type = "checkbox"; cb.checked = true;
+        cb.type = "checkbox"; cb.checked = enabled[cat.id];
         cb.addEventListener("change", () => { enabled[cat.id] = cb.checked; render(); });
         const sp = document.createElement("span");
         sp.textContent = cat.label; sp.style.flex = "1";
@@ -342,6 +381,7 @@
       fitTextarea();
       window.addEventListener("resize", fitTextarea);
       inputEl.addEventListener("input", () => { decisions.clear(); fitTextarea(); render(); });
+      termsEl.addEventListener("input", () => { decisions.clear(); render(); });
       copyBtn.addEventListener("click", async () => {
         const t = buildFinal(inputEl.value, currentMatches());
         try { await navigator.clipboard.writeText(t); copyBtn.textContent = "✓ Kopiert!"; }
@@ -356,6 +396,6 @@
       });
       render();
     </script>
-  <script type="module" src="https://static.cloudflareinsights.com/beacon.min.js/vce701823e78c4301a35b7e07294d87301792088814092" integrity="sha512-UKNk8GbxkABxKcXYuLkO16EleLGUkcvJWtpSNmExE0Too3ZaFAxTscNWEc1OdAv5/BikHawapSCaiD2XCmp+Bw==" nonce="gDvElBZtFY31u8heQPVvRQ==" data-cf-beacon='{"version":"2024.11.0","token":"36b4216ae2dc4d5488c249161e71fe1e","spa":2}' crossorigin="anonymous"></script>
+  <script type="module" src="https://static.cloudflareinsights.com/beacon.min.js/vce701823e78c4301a35b7e07294d87301792088814092" integrity="sha512-UKNk8GbxkABxKcXYuLkO16EleLGUkcvJWtpSNmExE0Too3ZaFAxTscNWEc1OdAv5/BikHawapSCaiD2XCmp+Bw==" nonce="s3s1scc6nNeyx/OTzPs4NQ==" data-cf-beacon='{"version":"2024.11.0","token":"36b4216ae2dc4d5488c249161e71fe1e","spa":2}' crossorigin="anonymous"></script>
 </body>
 </html>
