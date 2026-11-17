@@ -14,6 +14,15 @@
 <meta property="og:description" content="Projekt-Fälle aus NDR und RND mit Rollen und Zahlen, dazu journalistische Arbeitsproben aus ZDF und RND." />
 <meta property="og:url" content="https://redaktionsschmiede.de/arbeit/" />
 <link rel="stylesheet" href="/assets/site.css" />
+  <style>
+  /* Lightbox: Bilder per Klick vergroessern, rein lokal, keine externen Ressourcen */
+  .lightbox { position:fixed; inset:0; z-index:60; background:rgba(8,8,10,.93); display:flex; flex-direction:column; align-items:center; justify-content:center; gap:.7rem; padding:2rem; cursor:zoom-out; }
+  .lightbox[hidden] { display:none; }
+  .lightbox img { max-width:96vw; max-height:80vh; width:auto; height:auto; object-fit:contain; border-radius:4px; background:#000; }
+  .lightbox .lb-cap { color:var(--ink-soft); font-size:.85rem; text-align:center; max-width:70ch; margin:0; }
+  .lightbox button { position:absolute; top:.9rem; right:.9rem; border:1px solid var(--line); background:var(--paper); color:var(--ink); border-radius:6px; padding:.3rem .7rem; font:inherit; cursor:pointer; }
+  main figure img { cursor:zoom-in; }
+  </style>
 </head>
 <body>
 <a class="skip" href="#main">Zum Inhalt springen</a>
@@ -185,8 +194,8 @@
       </li>
       <li>
         <span class="meta">ZDF · Länderspiegel</span>
-        <a class="title" href="https://www.zdf.de/politik/laenderspiegel/engagierte-ostfriesen-in-emden-100.html">Engagierte Ostfriesen in Emden</a>
-        <p>Vier Wochen vor Ort in Emden, März 2023: ein ZDF-Bürgerprojekt mit Beiträgen für drehscheibe, Volle Kanne, Länderspiegel, ZDFheute und mehr. Zum Projekt gibt es die <a href="https://presseportal.zdf.de/pressemitteilung/in-ostfrieslands-groesster-stadt-zdf-in-emden">Projektbeschreibung des ZDF</a>.</p>
+        <a class="title" href="https://web.archive.org/web/20230408024206/https://www.zdf.de/politik/laenderspiegel/engagierte-ostfriesen-in-emden-100.html">Engagierte Ostfriesen in Emden</a>
+        <p>Vier Wochen vor Ort in Emden, März 2023: ein ZDF-Bürgerprojekt mit Beiträgen für drehscheibe, Volle Kanne, Länderspiegel, ZDFheute und mehr. Zum Projekt gibt es die <a href="https://presseportal.zdf.de/pressemitteilung/in-ostfrieslands-groesster-stadt-zdf-in-emden">Projektbeschreibung des ZDF</a>. Der Beitrag ist nicht mehr in der ZDF-Mediathek abrufbar; verlinkt ist die archivierte Originalseite (Wayback Machine, Stand April 2023).</p>
         <figure class="photo">
           <img src="/arbeit/img/emden.jpg" alt="Simon Hrubesch mit ZDF-Mikrofon vor Ort in Emden, im Hintergrund Kameramann Thomas Henke" onerror="this.closest('figure').hidden=true" />
           <figcaption>Vor Ort in Emden, März 2023 – mit Kameramann Thomas Henke. Foto: Roman Pawlowski, ZDF</figcaption>
@@ -196,6 +205,16 @@
         <span class="meta">ZDFheute · heute journal</span>
         <a class="title" href="https://www.zdfheute.de/video/heute-journal/der-rubel-rollt-nach-unten-100.html">Der Rubel rollt nach unten</a>
         <p>Über die wirtschaftlichen Auswirkungen in Russland, kurz nach Überfall auf die Ukraine.</p>
+      </li>
+      <li>
+        <span class="meta">ZDFheute · heute journal update</span>
+        <a class="title" href="https://www.zdfheute.de/video/heute-journal-update/cuxhaven-offshore-windpark-100.html">Windenergie-Ausbau vor der Nordseeküste</a>
+        <p>Vor Ort, wo die Energiewende aus dem Wasser ragt: über den Offshore-Windpark vor Cuxhaven und den Plan, die Leistung bis 2035 zu verfünffachen.</p>
+      </li>
+      <li>
+        <span class="meta">ZDFheute · Klimajobs</span>
+        <a class="title" href="https://www.youtube.com/watch?v=u2Q0eZCpg6Y">Gas aus dem eigenen Garten</a>
+        <p>Wie die Biogasanlagen-Entwicklerin Katrin Pütz aus Küchenabfällen und Pferdemist Biogas herstellt – und damit zu Hause ohne fossiles Gas kocht. Ein Porträt aus der ZDFheute-Klimajobs-Serie.</p>
       </li>
       <li>
         <span class="meta">RND · Interview · 2023</span>
@@ -220,6 +239,56 @@
   </div>
 </footer>
 
-<script type="module" src="https://static.cloudflareinsights.com/beacon.min.js/vce701823e78c4301a35b7e07294d87301792088814092" integrity="sha512-UKNk8GbxkABxKcXYuLkO16EleLGUkcvJWtpSNmExE0Too3ZaFAxTscNWEc1OdAv5/BikHawapSCaiD2XCmp+Bw==" nonce="WbaqZps5GtLLfOiTJHtnYA==" data-cf-beacon='{"version":"2024.11.0","token":"36b4216ae2dc4d5488c249161e71fe1e","spa":2}' crossorigin="anonymous"></script>
+<script>
+(function () {
+  "use strict";
+  var box = document.createElement("div");
+  box.className = "lightbox";
+  box.hidden = true;
+  var lbImg = document.createElement("img");
+  var lbCap = document.createElement("p");
+  lbCap.className = "lb-cap";
+  var btn = document.createElement("button");
+  btn.type = "button"; btn.textContent = "Schließen"; btn.setAttribute("aria-label", "Bildansicht schließen");
+  box.appendChild(lbImg); box.appendChild(lbCap); box.appendChild(btn);
+  document.body.appendChild(box);
+  var lastFocus = null;
+  function open(fig) {
+    var img = fig.querySelector("img");
+    if (!img) return;
+    lastFocus = document.activeElement;
+    lbImg.src = img.src;
+    lbImg.alt = img.alt || "";
+    var cap = fig.querySelector("figcaption");
+    lbCap.textContent = cap ? cap.textContent : "";
+    box.hidden = false;
+    document.body.style.overflow = "hidden";
+    btn.focus();
+  }
+  function close() {
+    box.hidden = true;
+    lbImg.src = ""; lbImg.alt = "";
+    lbCap.textContent = "";
+    document.body.style.overflow = "";
+    if (lastFocus && lastFocus.focus) lastFocus.focus();
+  }
+  document.querySelectorAll("main img").forEach(function (img) {
+    var fig = img.closest("figure");
+    if (!fig) return;
+    img.setAttribute("role", "button");
+    img.setAttribute("tabindex", "0");
+    img.setAttribute("aria-label", "Bild vergrößern: " + (img.alt || "Bild"));
+    var go = function (ev) { ev.preventDefault(); open(fig); };
+    img.addEventListener("click", go);
+    img.addEventListener("keydown", function (ev) {
+      if (ev.key === "Enter" || ev.key === " ") { ev.preventDefault(); open(fig); }
+    });
+  });
+  box.addEventListener("click", function (ev) { if (ev.target === box || ev.target === lbImg) close(); });
+  btn.addEventListener("click", close);
+  document.addEventListener("keydown", function (ev) { if (ev.key === "Escape" && !box.hidden) close(); });
+})();
+</script>
+<script type="module" src="https://static.cloudflareinsights.com/beacon.min.js/vce701823e78c4301a35b7e07294d87301792088814092" integrity="sha512-UKNk8GbxkABxKcXYuLkO16EleLGUkcvJWtpSNmExE0Too3ZaFAxTscNWEc1OdAv5/BikHawapSCaiD2XCmp+Bw==" nonce="mZ2dFOce9zSmfDdiiH1vfA==" data-cf-beacon='{"version":"2024.11.0","token":"36b4216ae2dc4d5488c249161e71fe1e","spa":2}' crossorigin="anonymous"></script>
 </body>
 </html>
