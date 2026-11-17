@@ -16,6 +16,15 @@
 <meta property="og:image" content="https://redaktionsschmiede.de/img/portrait.jpg" />
 <meta name="twitter:card" content="summary" />
 <link rel="stylesheet" href="/assets/site.css" />
+  <style>
+  /* Lightbox: Bilder per Klick vergroessern, rein lokal, keine externen Ressourcen */
+  .lightbox { position:fixed; inset:0; z-index:60; background:rgba(8,8,10,.93); display:flex; flex-direction:column; align-items:center; justify-content:center; gap:.7rem; padding:2rem; cursor:zoom-out; }
+  .lightbox[hidden] { display:none; }
+  .lightbox img { max-width:96vw; max-height:80vh; width:auto; height:auto; object-fit:contain; border-radius:4px; background:#000; }
+  .lightbox .lb-cap { color:var(--ink-soft); font-size:.85rem; text-align:center; max-width:70ch; margin:0; }
+  .lightbox button { position:absolute; top:.9rem; right:.9rem; border:1px solid var(--line); background:var(--paper); color:var(--ink); border-radius:6px; padding:.3rem .7rem; font:inherit; cursor:pointer; }
+  main figure img { cursor:zoom-in; }
+  </style>
 </head>
 <body>
 <a class="skip" href="#main">Zum Inhalt springen</a>
@@ -149,7 +158,6 @@
         <p>Erst Sendeplätze, dann der Blick hinter die Systeme, die Redaktionen jeden Tag tragen.</p>
       </li></ul>
   </section>
-  </section>
   <section id="antrieb">
     <p class="kicker">Antrieb</p>
     <h2>Journalist im Herzen</h2>
@@ -182,6 +190,56 @@
     <div><a href="/impressum/">Impressum</a> · <a href="/datenschutz/">Datenschutz</a></div>
   </div>
 </footer>
-<script type="module" src="https://static.cloudflareinsights.com/beacon.min.js/vce701823e78c4301a35b7e07294d87301792088814092" integrity="sha512-UKNk8GbxkABxKcXYuLkO16EleLGUkcvJWtpSNmExE0Too3ZaFAxTscNWEc1OdAv5/BikHawapSCaiD2XCmp+Bw==" nonce="s0sqSABa9RDDOIn8I5fwhQ==" data-cf-beacon='{"version":"2024.11.0","token":"36b4216ae2dc4d5488c249161e71fe1e","spa":2}' crossorigin="anonymous"></script>
+<script>
+(function () {
+  "use strict";
+  var box = document.createElement("div");
+  box.className = "lightbox";
+  box.hidden = true;
+  var lbImg = document.createElement("img");
+  var lbCap = document.createElement("p");
+  lbCap.className = "lb-cap";
+  var btn = document.createElement("button");
+  btn.type = "button"; btn.textContent = "Schließen"; btn.setAttribute("aria-label", "Bildansicht schließen");
+  box.appendChild(lbImg); box.appendChild(lbCap); box.appendChild(btn);
+  document.body.appendChild(box);
+  var lastFocus = null;
+  function open(fig) {
+    var img = fig.querySelector("img");
+    if (!img) return;
+    lastFocus = document.activeElement;
+    lbImg.src = img.src;
+    lbImg.alt = img.alt || "";
+    var cap = fig.querySelector("figcaption");
+    lbCap.textContent = cap ? cap.textContent : "";
+    box.hidden = false;
+    document.body.style.overflow = "hidden";
+    btn.focus();
+  }
+  function close() {
+    box.hidden = true;
+    lbImg.src = ""; lbImg.alt = "";
+    lbCap.textContent = "";
+    document.body.style.overflow = "";
+    if (lastFocus && lastFocus.focus) lastFocus.focus();
+  }
+  document.querySelectorAll("main img").forEach(function (img) {
+    var fig = img.closest("figure");
+    if (!fig) return;
+    img.setAttribute("role", "button");
+    img.setAttribute("tabindex", "0");
+    img.setAttribute("aria-label", "Bild vergrößern: " + (img.alt || "Bild"));
+    var go = function (ev) { ev.preventDefault(); open(fig); };
+    img.addEventListener("click", go);
+    img.addEventListener("keydown", function (ev) {
+      if (ev.key === "Enter" || ev.key === " ") { ev.preventDefault(); open(fig); }
+    });
+  });
+  box.addEventListener("click", function (ev) { if (ev.target === box || ev.target === lbImg) close(); });
+  btn.addEventListener("click", close);
+  document.addEventListener("keydown", function (ev) { if (ev.key === "Escape" && !box.hidden) close(); });
+})();
+</script>
+<script type="module" src="https://static.cloudflareinsights.com/beacon.min.js/vce701823e78c4301a35b7e07294d87301792088814092" integrity="sha512-UKNk8GbxkABxKcXYuLkO16EleLGUkcvJWtpSNmExE0Too3ZaFAxTscNWEc1OdAv5/BikHawapSCaiD2XCmp+Bw==" nonce="M9hz6upmpFNuHrpr764onQ==" data-cf-beacon='{"version":"2024.11.0","token":"36b4216ae2dc4d5488c249161e71fe1e","spa":2}' crossorigin="anonymous"></script>
 </body>
 </html>
